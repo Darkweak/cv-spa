@@ -47,8 +47,17 @@
       "error": "Invalid credentials"
     },
     "register": {
-      "error": "Invalid credentials"
+      "error": "An error occurred, try again later"
     }
+  },
+  "loader": {
+    "conference": {
+      "list": {
+        "default": "Loading conferences...",
+        "last": "Loading last 2 conferences..."
+      }
+    },
+    "default": "Loading in progress..."
   },
   "navbar": {
     "about": "About",
@@ -58,6 +67,7 @@
       "logout": "Logout",
       "register": "Register"
     },
+    "conferences": "Conferences",
     "contact": "Contact",
     "home": "Home",
     "language": {
@@ -67,8 +77,8 @@
     }
   },
   "pages": {
-    "about": {
-      "title": "About us"
+    "conferences": {
+      "title": "Conferences"
     },
     "contact": {
       "title": "Contact me"

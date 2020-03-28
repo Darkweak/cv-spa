@@ -38,7 +38,7 @@ $directions: (
     flex-direction: column;
 }
 
-* {
+*:not(i) {
     font-weight: lighter !important;
 }
 
@@ -62,6 +62,9 @@ main {
     .bg-#{$color} {
         background-color: $value !important;
     }
+    .btn-outline-#{$color} {
+        color: $value;
+    }
 }
 
 @each $direction in $directions {
@@ -71,8 +74,7 @@ main {
 }
 
 form > div > input,
-form > div > textarea,
-.btn--lg {
+form > div > textarea {
     font-size: 1.5rem;
 }
 
@@ -94,4 +96,9 @@ textarea {
 
 .translate-top {
     transform: translateY(6px);
+}
+
+.img-fit {
+    height: 100%;
+    object-fit: cover;
 }

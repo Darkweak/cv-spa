@@ -1,9 +1,8 @@
 import { Contact, Login, Welcome } from './components/pages';
-import { User } from './actions/user';
 import { AllowedLanguages } from './contexts';
 import { RouteProps } from 'react-router-dom';
-import { IconInterface } from './components/Layout/Icon';
-import { Dispatch, SetStateAction } from 'react';
+import { IconInterface } from './components/Layout';
+import { List as ConferenceList } from './components/pages/Conferences';
 
 export interface IRoute extends RouteProps {
     changeLanguage?: (setSelectedLanguage: (language: AllowedLanguages) => void) => void,
@@ -47,16 +46,14 @@ export const languageRoutes: IRoute[] = [
 
 export const loggedRoutes: IRoute[] = [
     {
-        handleClick: (callback: Dispatch<SetStateAction<{}>>, router: any) => {
-            new User().logout({callback});
-            router && router.history.push('/')
-        },
+        component: ConferenceList,
         icon: {
-            icon: ''
+            icon: '',
         },
-        name: 'account.logout',
-        path: '',
-    },
+        name: 'conferences',
+        path: '/conferences/:city([a-z]+)-:date([0-9]{4}\-[0-9]{2}\-[0-9]{2})',
+        realPath: '/conferences/city',
+    }
 ];
 
 export const navbarRoutes: IRoute[] = [
@@ -70,10 +67,18 @@ export const navbarRoutes: IRoute[] = [
         realPath: '/',
     },
     {
+        component: ConferenceList,
+        icon: {
+            icon: 'microphone',
+        },
+        name: 'conferences',
+        path: '/conferences',
+        realPath: '/conferences',
+    },
+    {
         component: Contact,
         icon: {
-            icon: 'envelope',
-            type: 'far',
+            icon: 'envelope'
         },
         name: 'contact',
         path: '/contact',
@@ -81,6 +86,7 @@ export const navbarRoutes: IRoute[] = [
 ];
 
 export const routes: IRoute[] = [
+    ...loggedRoutes,
     ...navbarRoutes,
     ...connexionRoutes,
     ...languageRoutes,

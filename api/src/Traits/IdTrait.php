@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Uuid;
 
 trait IdTrait
 {
@@ -11,7 +10,7 @@ trait IdTrait
      * @var string
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @ORM\Column(type="guid")
+     * @ORM\Column(type="uuid")
      */
     private $id;
 

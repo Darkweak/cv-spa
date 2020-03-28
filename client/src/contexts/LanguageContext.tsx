@@ -24,7 +24,7 @@ interface ITranslations {
         }
     };
     pages: {
-        about: IPageTranslations;
+        conferences: IPageTranslations;
         contact: IPageTranslations;
         home: IPageTranslations;
         login: IPageTranslations;

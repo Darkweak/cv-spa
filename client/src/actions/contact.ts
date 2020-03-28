@@ -17,7 +17,7 @@ export class Contact extends API {
     public endpoint = '/contact';
 
     send({data, ref, setError, setSent}: ContactInterface) {
-        return super
+        return this
             .post({data})
             .then(({status}: AxiosResponse) => {
                 if (200 === status) {

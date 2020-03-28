@@ -42,7 +42,22 @@
         "label": "Nom d'utilisateur",
         "placeholder": "johndoe"
       }
+    },
+    "login": {
+      "error": "Identifiants invalides"
+    },
+    "register": {
+      "error": "Une erreur est survenue, veuillez réessayer plus tard"
     }
+  },
+  "loader": {
+    "conference": {
+      "list": {
+        "default": "Chargement des conférences...",
+        "last": "Chargement des 2 dernières conférences..."
+      }
+    },
+    "default": "Chargement en cours..."
   },
   "navbar": {
     "about": "À propos",
@@ -52,6 +67,7 @@
       "logout": "Déconnexion",
       "register": "Inscription"
     },
+    "conferences": "Conférences",
     "contact": "Contact",
     "home": "Accueil",
     "language": {
@@ -61,8 +77,8 @@
     }
   },
   "pages": {
-    "about": {
-      "title": "À propos"
+    "conferences": {
+      "title": "Conférences"
     },
     "contact": {
       "title": "Me contacter"

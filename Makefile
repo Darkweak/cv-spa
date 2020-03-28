@@ -28,7 +28,6 @@ create-db: ## Create database
 deploy: up-prod build update install cache up ## Deploy command
 
 drop-db: ## Drop database
-	$(DC_UP)
 	$(BIN_CONSOLE) doctrine:database:drop --force
 
 install: composer-install migration-migrate ## Install and setup project
@@ -49,7 +48,7 @@ migration-generate: ## Create new migration
 	$(BIN_CONSOLE) doctrine:migrations:generate
 
 migration-migrate: ## Execute unlisted migrations
-	$(BIN_CONSOLE) doctrine:migrations:migrate
+	$(BIN_CONSOLE) doctrine:migrations:migrate --quiet
 
 reset-db: drop-db create-db migration-migrate ## Reset database
 

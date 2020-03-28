@@ -13,8 +13,6 @@ export const Section: React.FC<SectionInterface> = ({description, title}) => (
                 <div className='dropdown-divider'/>
             </h1>
         </div>
-        <h5 className='h5-responsive m-0'>
-            {description}
-        </h5>
+        { description }
     </>
-)
+);
