@@ -7,8 +7,10 @@ import { ConferenceItem } from '../../components/Conference';
 import { Container } from 'react-bootstrap';
 import { Conference, ConferenceInstance } from '../../actions';
 import { BaseStoreContext, SET_CONFERENCE } from '../../contexts/BaseStoreContext';
+import { PageType } from '../interface';
+import { List } from './List';
 
-export const Item: React.FC = () => {
+export const Item: PageType = () => {
     const { city, date } = useParams();
     const { conference: { [`${ city }-${ date }`]: baseConference }, dispatch } = useContext(BaseStoreContext);
     const [conference, setConference] = useState<ConferenceInstance|undefined>(baseConference);
@@ -37,4 +39,16 @@ export const Item: React.FC = () => {
             </div>
         </Layout>
     );
+};
+
+Item.getInitialProps = ([,,, slug]: [string, string, string, string]) => {
+    return [
+        new Conference()
+            .get({ id: slug })
+            .then(conference => ({
+                conference: {
+                    [`${ conference.city }-${ conference.date }`]: conference
+                }
+            }))
+    ];
 };

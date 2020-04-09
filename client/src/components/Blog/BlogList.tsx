@@ -27,14 +27,16 @@ export const BlogList: React.FC = () => {
     const { articles: baseArticles, dispatch } = useContext(BaseStoreContext);
     const [articles, setArticles] = useState<ArticleInstance[]>(baseArticles);
     useEffect(() => {
-        new Article().getAll().then(((articles) => {
-            setArticles(articles);
-            dispatch({
-                payload: articles,
-                type: SET_ARTICLES,
-            })
-        }));
-    }, [dispatch]);
+       if (!baseArticles.length) {
+           new Article().getAll().then(((articles) => {
+               setArticles(articles);
+               dispatch({
+                   payload: articles,
+                   type: SET_ARTICLES,
+               })
+           }));
+       }
+    }, [baseArticles, dispatch]);
 
     return (
         <div className='row m-0'>

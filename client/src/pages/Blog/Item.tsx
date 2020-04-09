@@ -16,16 +16,18 @@ export const BlogItem: PageType = () => {
     const { article: { [`${ slug }`]: baseArticle }, dispatch } = useContext(BaseStoreContext);
     const [article, setArticle] = useState<ArticleInstance|undefined>(baseArticle);
     useEffect(() => {
-        new Article().get({ id: `${ slug }` }).then((article) => {
-            setArticle(article);
-            dispatch({
-                payload: {
-                    key: article.translations[language].slug,
-                    value: article,
-                },
-                type: SET_ARTICLE,
-            })
-        });
+        if (!baseArticle) {
+            new Article().get({ id: `${ slug }` }).then((article) => {
+                setArticle(article);
+                dispatch({
+                    payload: {
+                        key: article.translations[language].slug,
+                        value: article,
+                    },
+                    type: SET_ARTICLE,
+                })
+            });
+        }
     }, [dispatch, language, slug]);
     const title = article?.translations[language].title || '';
     const t = translate('loader.article.item');

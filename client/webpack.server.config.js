@@ -41,7 +41,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        REACT_APP_API_ENTRYPOINT: JSON.stringify('http://api.domain.com'),
+        REACT_APP_API_ENTRYPOINT: JSON.stringify('http://cache.domain.com'),
         REACT_APP_DOMAIN: JSON.stringify('http://localhost:3000'),
         REACT_APP_NAME: JSON.stringify('APP name'),
       }

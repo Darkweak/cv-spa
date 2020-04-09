@@ -1,7 +1,16 @@
 import jwt_decode from 'jwt-decode';
-import { ConferenceInstance } from '../actions';
+import { ArticleInstance, ConferenceInstance } from '../actions';
 
 interface InitialStateInterface {
+    blogItem: {
+        [key: string]: string
+    },
+    blogList: {
+        articles: ArticleInstance[]
+    },
+    conference: {
+        [key: string]: ConferenceInstance
+    },
     conferences: {
         conferences: ConferenceInstance[]
     },

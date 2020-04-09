@@ -16,7 +16,7 @@ export class ConferenceInstance extends AbstractModel {
     public abstract: string;
     public city: string;
     public code: string;
-    public date: Date;
+    public date: string;
     public image: string;
     public link: string;
     public street: string;
@@ -27,7 +27,7 @@ export class ConferenceInstance extends AbstractModel {
         this.abstract = conference.abstract;
         this.city = conference.city;
         this.code = conference.cp;
-        this.date = new Date(conference.date);
+        this.date = conference.date;
         this.image = conference.image;
         this.link = conference.link;
         this.name = conference.name;

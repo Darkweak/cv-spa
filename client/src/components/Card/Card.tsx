@@ -20,7 +20,7 @@ export const Card: React.FC<CardInterface> = ({ children, item }) => {
                             (
                                 <>
                                     <h2 className='d-block card-title fs-5 font-weight-bolder'>{ item.city }</h2>
-                                    <span className='d-block card-text font-weight-bold m-0'>{ item.date.toLocaleDateString() }</span>
+                                    <span className='d-block card-text font-weight-bold m-0'>{ new Date(item.date).toLocaleDateString() }</span>
                                 </>
                             )
                     }

@@ -5,6 +5,7 @@ x-cache-from:
     cache_from:
       - ${NGINX_IMAGE:-quay.io/api-platform/nginx}
       - ${PHP_IMAGE:-quay.io/api-platform/php}
+      - ${VARNISH_IMAGE:-quay.io/api-platform/varnish}
 
 x-networks:
   - &networks
@@ -21,7 +22,7 @@ x-environments-ssr:
 x-environments:
   - &environments
     environment:
-      - API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT=http://api
+      - API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT=http://cache-proxy
       - API_PLATFORM_CLIENT_GENERATOR_OUTPUT=src
       - REACT_APP_API_ENTRYPOINT=${HTTP_OR_SSL}api.${DOMAIN}
       - REACT_APP_DOMAIN=${HTTP_OR_SSL}${DOMAIN}
@@ -77,6 +78,22 @@ services:
       - ./api/public:/srv/api/public:ro
     labels:
       - traefik.http.routers.api.rule=Host(`api.${DOMAIN}`)
+    <<: *networks
+
+  cache-proxy:
+    image: ${VARNISH_IMAGE:-quay.io/api-platform/varnish}
+    build:
+      context: ./api
+      target: api_platform_varnish
+      <<: *api-cache-from
+    depends_on:
+      - api
+    volumes:
+      - ./api/docker/varnish/conf:/usr/local/etc/varnish:ro
+    tmpfs:
+      - /usr/local/var/varnish:exec
+    labels:
+      - traefik.http.routers.cache.rule=Host(`cache.${DOMAIN}`)
     <<: *networks
 
   db:

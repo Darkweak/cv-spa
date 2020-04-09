@@ -39,10 +39,26 @@ interface BaseStoreInterface {
     dispatch: Dispatch<Action>,
 }
 
+function fromInitialState<T>(
+    t: MappedKeyObjectType<ArticleInstance|ConferenceInstance|string> = {},
+    f: (v: string) => {} = v => v,
+){
+    return Object.fromEntries(
+        Object
+            .keys(t)
+            .map(k => [
+                k,
+                (
+                    (f(t[k].toString() || '{}') || t[k]) as T
+                )
+            ])
+    )
+}
+
 const defaultValue: BaseStoreInterface = {
-    article: {},
-    articles: [],
-    conference: {},
+    article: fromInitialState<ArticleInstance>(initialState?.blogItem, v => JSON.parse(decodeURIComponent(v))),
+    articles: (initialState?.blogList?.articles) || [],
+    conference: fromInitialState<ConferenceInstance>(initialState?.conference),
     conferences: {
         list: (initialState?.conferences?.conferences) || [],
         welcome: (initialState?.welcome?.conferences) || []
