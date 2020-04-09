@@ -14,21 +14,20 @@ abstract class AbstractTextMigration extends AbstractMigration {
 		return [];
 	}
 
-	protected function insertTexts(): void
+	protected function insertTexts(int $n): void
 	{
-		$texts = $this->getTexts();
 		$mh = new MigrationHelper();
-		for ($i = 0; $i < count($texts); $i++) {
+		for ($i = 0; $i < $n; $i++) {
 			$this->addSql(
 				$mh->insert(
 					'text',
-					['article_id', 'content'],
+					['article_id'],
 					[
 						[
 							"'" . $this->article . "'",
-							"'" . $texts[$i] . "'"
 						]
-					]
+					],
+					true
 				)
 			);
 		}
@@ -44,7 +43,8 @@ abstract class AbstractTextMigration extends AbstractMigration {
 					['article_id'],
 					[
 						["'" . $this->article . "'"]
-					]
+					],
+					true
 				)
 			);
 		}

@@ -2,43 +2,79 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Translation\ArticleTranslation;
-use App\Repository\ArticleRepository;
 use App\Traits\IdTrait;
 use App\Traits\ImageTrait;
-use App\Traits\SluggableTrait;
+use App\Traits\TimestampableTrait;
+use App\Traits\TranslatableSluggableTrait;
 use App\Traits\TranslatableTitleTrait;
 use App\Traits\TranslatableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
+use Locastic\ApiPlatformTranslationBundle\Model\AbstractTranslatable;
+use Locastic\ApiPlatformTranslationBundle\Model\TranslationInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"article_list"}}
+ *	 		},
+ *     		"post"={
+ *     			"security"={"is_granted('ROLE_ADMIN')"}
+ * 			}
+ *	 	},
+ *     	itemOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"article_item"}}
+ *	 		},
+ *     		"patch"={
+ *     			"security"="is_granted('ROLE_ADMIN')",
+ *     			"normalization_context"={"groups"={"conference_list"}}
+ * 			},
+ *     		"delete"={
+ *     			"security"="is_granted('ROLE_ADMIN')",
+ *     			"normalization_context"={"groups"={"conference_list"}}
+ * 			}
+ *	 	},
+ *    	normalizationContext={"groups"={"article_list"}}
+ * )
  * @ORM\Entity
- * @Gedmo\TranslationEntity(class=ArticleTranslation::class)
  */
-class Article implements Translatable
+class Article extends AbstractTranslatable
 {
 	use IdTrait;
 	use ImageTrait;
+	use TimestampableTrait;
 	use TranslatableTitleTrait;
+	use TranslatableSluggableTrait;
 	use TranslatableTrait;
-	use SluggableTrait;
 
 	/**
 	 * @ORM\OneToMany(targetEntity=CodePackage::class, mappedBy="article")
+	 * @Groups({"article_item"})
 	 */
 	private $codePackages;
 
 	/**
 	 * @ORM\OneToMany(targetEntity=Text::class, mappedBy="article")
+	 * @Groups({"article_item"})
 	 */
 	private $texts;
 
+	/**
+	 * @Groups({"article_list", "article_item", "translations"})
+	 * @ORM\OneToMany(targetEntity=ArticleTranslation::class, mappedBy="translatable", cascade={"persist", "remove"}, orphanRemoval=true)
+	 */
+	protected $translations;
+
 	public function __construct()
 	{
+		parent::__construct();
+		$this->translations = new ArrayCollection();
 		$this->codePackages = new ArrayCollection();
 		$this->texts = new ArrayCollection();
 	}
@@ -91,5 +127,10 @@ class Article implements Translatable
 	{
 		$this->texts->removeElement($text);
 		return $this;
+	}
+
+	protected function createTranslation(): TranslationInterface
+	{
+		return new ArticleTranslation();
 	}
 }

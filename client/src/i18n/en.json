@@ -50,8 +50,20 @@
       "error": "An error occurred, try again later"
     }
   },
+  "footer": {
+    "developped": "Developped by",
+    "made": "Made with",
+    "find": "Find me on"
+  },
   "loader": {
+    "article": {
+      "item": "Loading article...",
+      "list": {
+        "default": "Loading articles..."
+      }
+    },
     "conference": {
+      "item": "Loading conference...",
       "list": {
         "default": "Loading conferences...",
         "last": "Loading last 2 conferences..."
@@ -67,6 +79,7 @@
       "logout": "Logout",
       "register": "Register"
     },
+    "blog": "Blog",
     "conferences": "Conferences",
     "contact": "Contact",
     "home": "Home",
@@ -77,20 +90,64 @@
     }
   },
   "pages": {
+    "article": {
+      "list": {
+        "title": "Article list"
+      },
+      "wave": {
+        "subtitle": "Technical articles",
+        "title": "Blog"
+      }
+    },
     "conferences": {
-      "title": "Conferences"
+      "item": {
+        "title": "Conference %s"
+      },
+      "list": {
+        "title": "Conference list"
+      },
+      "wave": {
+        "title": "Conferences",
+        "subtitle": "Previous and upcoming"
+      }
     },
     "contact": {
-      "title": "Contact me"
+      "wave": {
+        "title": "Contact me",
+        "subtitle": ""
+      }
     },
     "home": {
-      "title": "Welcome"
-    },
-    "login": {
-      "title": "Login"
-    },
-    "register": {
-      "title": "Register"
+      "section": {
+        "0": {
+          "descriptions": [
+            "My name is Sylvain COMBRAQUE and I'm actually full-stack developer at",
+            "passionate by development, more precisely by web development because it can show the developer creativity."
+          ],
+          "title": "Who am I ?"
+        },
+        "1": {
+          "descriptions": [
+            "Creator of cache system for Træfik called",
+            "This caching system is compatible with any reverse proxy like Apache or Nginx since it's v1.1. I already experimented a template creation for a marketplace that you can retrieve at",
+            "this address",
+            "This service is open-source, free and without ads, all sources are availables on my Github",
+            "This project made me possible to practice API Platform (ReactJS for front-end side, Symfony for Back-end/API side) with Træfik (for the load-balancing and containers orchestration sides), NodeJS (for SSR side), and all of that was packaged with Swarm clusters"
+          ],
+          "title": "A passionate developer"
+        },
+        "2": {
+          "descriptions": [
+            "See all conferences"
+          ],
+          "title": "Previous conferences"
+        }
+      },
+      "wave": {
+        "download": "Download my CV",
+        "title": "Sylvain COMBRAQUE",
+        "subtitle": "Developer - Speaker"
+      }
     }
   }
 }

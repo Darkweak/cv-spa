@@ -1,8 +1,8 @@
 import en from './en.json';
 import fr from './fr.json';
-import { ILanguages } from '../contexts';
+import { LanguageInterface } from '../contexts';
 
-export const languages: ILanguages = {
+export const languages: LanguageInterface = {
     en,
     fr,
 };

@@ -1,6 +1,6 @@
 import React, { createRef, useContext } from 'react';
 import { IField } from './Field';
-import { Link } from 'react-router-dom';
+import { Link } from '../CustomLink';
 import { FormContext, LanguageContext } from '../../contexts';
 import { Spinner } from '../Loader';
 import { GreenPilledButton } from '../Button';

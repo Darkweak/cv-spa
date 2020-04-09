@@ -9,8 +9,7 @@ class JobRepository extends EntityRepository
 	public function findAll()
 	{
 		return $this->findBy([], [
-			'leaveAt' => 'DESC',
-			'id' => 'DESC',
+			'leavedAt' => 'DESC'
 		]);
 	}
 }

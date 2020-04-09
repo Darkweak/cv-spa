@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\SiteRepository;
 use App\Traits\DescriptionTrait;
 use App\Traits\IdTrait;
 use App\Traits\ImageTrait;
@@ -15,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=SiteRepository::class)
+ * @ORM\Entity
  */
 class Site
 {

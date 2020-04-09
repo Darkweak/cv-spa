@@ -3,11 +3,13 @@
 namespace App\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 trait ImageTrait
 {
 	/**
 	 * @ORM\Column
+	 * @Groups({"article_list", "conference_item", "conference_list"})
 	 */
 	private $image;
 

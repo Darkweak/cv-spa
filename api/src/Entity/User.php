@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\UserRepository;
 use App\Traits\EmailTrait;
 use App\Traits\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,7 +29,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *          }
  *      }
  * )
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity
  * @ORM\Table(name="users")
  */
 class User implements UserInterface

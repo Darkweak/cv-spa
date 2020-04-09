@@ -9,3 +9,22 @@ login:
 contact:
     path: /contact
     methods: [POST]
+    controller: App\Action\Contact
+
+get_conference_by_city_and_date:
+    path: /conference/{city}-{date}
+    requirements:
+        city: \D+
+        date: \d{4}(-\d{1,2}){2}
+    methods: [GET]
+    controller: App\Controller\Conference
+
+get_article_by_slug:
+    path: /article/{slug}
+    methods: [GET]
+    controller: App\Controller\Article
+
+get_cv_pdf:
+    path: /cv
+    methods: [GET]
+    controller: App\Controller\CV

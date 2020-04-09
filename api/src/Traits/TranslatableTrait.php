@@ -2,34 +2,13 @@
 
 namespace App\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 trait TranslatableTrait
 {
-	/**
-	 * @Gedmo\Translatable
-	 * @ORM\Column(type="text")
-	 */
-	private $content;
+	protected $translations;
 
-	/**
-	 * @Gedmo\Locale
-	 */
-	private $locale;
-
-	public function getContent(): string
+	public function getTranslations()
 	{
-		return $this->content;
-	}
-
-	public function setContent(string $content)
-	{
-		$this->content = $content;
-	}
-
-	public function setTranslatableLocale(string $locale)
-	{
-		$this->locale = $locale;
+		return $this->translations;
 	}
 }

@@ -26,6 +26,16 @@ $directions: (
     .fs-#{$i} {
         font-size: $i * 0.5 + rem;
     }
+
+    .z-#{$i} {
+        z-index: $i;
+    }
+
+    @each $direction in $directions {
+        .#{$direction}-1 {
+            #{$direction}: 1px;
+        }
+    }
 }
 
 .pointer {
@@ -101,4 +111,12 @@ textarea {
 .img-fit {
     height: 100%;
     object-fit: cover;
+}
+
+pre {
+    margin: 0;
+}
+
+code {
+    padding: 0.25rem;
 }

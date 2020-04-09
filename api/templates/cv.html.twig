@@ -1,0 +1,99 @@
+<style>
+    .bg-primary {
+        background-color: #2c3e50;
+    }
+
+    .primary {
+        color: #2c3e50;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .d-block {
+        display: block;
+    }
+
+    .text-muted {
+        color: dimgrey;
+    }
+
+    .no-decoration {
+        text-decoration: none;
+    }
+
+    .fs-30 {
+        font-size: 30px;
+    }
+
+    div {
+        padding: 0;
+        margin: 0;
+    }
+
+    .text-underline {
+        text-decoration: underline;
+    }
+
+    .d-flex {
+        display: inline-flex;
+    }
+</style>
+<p class="primary text-center fs-30">Curriculum Vitae</p>
+<br/>
+<br/>
+<br/>
+<span class="d-block">Sylvain COMBRAQUE</span><br/>
+<span class="d-block">71 rue du général de la Bourdonnaye</span><br/>
+<span class="d-block">59000 Lille (FRANCE)</span><br/>
+<span class="d-block">Né le 01/11/1997</span><br/>
+<span class="d-block">Port.:
+    <a href="tel:+33620651593" class="no-decoration text-muted">+33620651593</a>
+</span>
+<br/>
+<span class="d-block">Mail:
+    <a href="mailto:sylvaincombraque@hotmail.fr" class="no-decoration text-muted">sylvaincombraque@hotmail.fr</a>
+</span>
+<br/>
+<span class="d-block">Permis B + véhicule</span>
+<br/>
+<h3 class="text-underline">Expériences professionnelles</h3>
+{% for job in jobs %}
+    <br/>
+    <span class="text-underline">{{ job.startedAt|date('d/m/Y') }} - {{ job.leavedAt ? job.leavedAt|date('d/m/Y') : 'Aujourd\'hui' }}</span><br/>
+    <span>{{ job.name }} à {{ job.institute }}, {{ job.cp }} {{ job.city }}</span><br/>
+    <br/>
+{% endfor %}
+<br/>
+<h3 class="text-underline">Diplômes</h3>
+{% for diploma in diplomas %}
+    <br/>
+    <span class="text-underline">{{ diploma.startedAt|date('d/m/Y') }} - {{ diploma.obtainedAt|date('d/m/Y') }}</span><br/>
+    <span>{{ diploma.name }} à {{ diploma.institute }}, {{ diploma.cp }} {{ diploma.city }}</span>
+    <br/>
+{% endfor %}
+<br/>
+<h3 class="text-underline">Langues</h3>
+<br/>
+<span>Anglais: niveau B2</span>
+<br/>
+<br/>
+<h3 class="text-underline">Réalisations</h3>
+{% for creation in creations %}
+    <br/>
+    <span>
+        <a href="{{ creation.link }}" class="text-muted no-decoration">
+            {{ creation.link }}
+        </a>
+    </span><br/>
+    <span>
+        {{ creation.description }}
+    </span>
+    <br/>
+{% endfor %}
+<br/>

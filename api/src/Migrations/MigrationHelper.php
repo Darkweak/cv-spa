@@ -22,8 +22,17 @@ class MigrationHelper
      * @return string
      * @throws \Exception
      */
-    public function insert(string $table, array $fields, array $values, bool $withoutId = false): string
+    public function insert(
+    	string $table,
+		array $fields,
+		array $values,
+		bool $timestampable = false,
+		bool $withoutId = false
+	): string
     {
+    	if ($timestampable) {
+    		\array_push($fields, 'created_at');
+		}
     	$idField = $withoutId ? '' : 'id,';
         $fields = \join(', ', $fields);
         $rq = "INSERT INTO $table ($idField $fields) VALUES ";
@@ -33,6 +42,13 @@ class MigrationHelper
 				$id = '';
 			} else {
 				$id = "'".(Uuid::uuid4())->serialize()."', ";
+			}
+			if ($timestampable) {
+				\array_push(
+					$value,
+					"'".(new \DateTime())->format('Y-m-d H:i:s')."'"
+				);
+				\sleep(1);
 			}
 
             $rq .= \sprintf(

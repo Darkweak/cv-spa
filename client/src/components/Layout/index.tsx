@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavBar } from './NavigationBar';
-import './layout.css';
+import './layout.scss';
 import { Footer } from './Footer';
+import { LanguageContext } from '../../contexts';
 
 export interface ClassNameInterface {
-    className?: string,
+    className?: string;
 }
 
-export const Layout: React.FC = ({children}) => (
-    <div className='bg-gradient'>
-        <main>
-            <NavBar/>
-            <div className='pt-4'>
-                {children}
-            </div>
-        </main>
-        <Footer/>
-    </div>
-);
+interface LayoutInterface {
+    title?: string;
+}
+
+export const Layout: React.FC<LayoutInterface> = ({children, title}) => {
+    const { translate } = useContext(LanguageContext);
+    useEffect(() => {
+        document.title = translate(title || 'devcv | Sylvain COMBRAQUE');
+    }, [title, translate]);
+
+    return (
+        <div className='bg-gradient'>
+            <main>
+                <NavBar/>
+                <div className='pt-4'>
+                    {children}
+                </div>
+            </main>
+            <Footer/>
+        </div>
+    )
+};
 
 export * from './Footer';
 export * from './Icon';

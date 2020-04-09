@@ -10,11 +10,14 @@ interface CommonWaveInterface extends WaveInterface {
 }
 
 const CommonWave: React.FC<CommonWaveInterface> = ({className, data, color}) => (
-    <svg xmlns='http://www.w3.org/2000/svg' className={className} viewBox='0 0 1440 320'>
+    <svg
+        xmlns='http://www.w3.org/2000/svg'
+        className="img-fluid position-relative top-1"
+        viewBox='0 0 1440 320'>
         <path
-            className={`fill-${color}`}
+            className={`img-fluid fill-${ color }`}
             fillOpacity='1'
-            d={data}/>
+            d={ data }/>
     </svg>
 )
 

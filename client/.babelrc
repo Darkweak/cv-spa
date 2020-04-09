@@ -1,0 +1,24 @@
+{
+  "plugins": [
+    "css-modules-transform",
+    "@babel/plugin-transform-runtime"
+  ],
+  "presets": [
+    "@babel/react",
+    "@babel/typescript",
+    "@babel/env"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel",
+        "transform-decorators-legacy",
+        "transform-object-rest-spread"
+      ],
+      "presets": [
+        ["env", { "modules": false }],
+        "react"
+      ]
+    }
+  }
+}

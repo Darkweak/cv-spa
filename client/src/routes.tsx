@@ -1,8 +1,15 @@
-import { Contact, Login, Welcome } from './components/pages';
+import {
+    Contact,
+    BlogItem,
+    BlogList,
+    Item as ConferenceItem,
+    List as ConferenceList,
+    Login,
+    Welcome
+} from './pages';
 import { AllowedLanguages } from './contexts';
 import { RouteProps } from 'react-router-dom';
 import { IconInterface } from './components/Layout';
-import { List as ConferenceList } from './components/pages/Conferences';
 
 export interface IRoute extends RouteProps {
     changeLanguage?: (setSelectedLanguage: (language: AllowedLanguages) => void) => void,
@@ -31,39 +38,53 @@ export const languageRoutes: IRoute[] = [
             icon: ''
         },
         name: 'language.fr',
-        path: '',
+        path: '/language.fr',
+        strict: true,
+        exact: true,
     },
     {
         changeLanguage: (setSelectedLanguage) => setSelectedLanguage('en'),
+        exact: true,
         handleClick: true,
         icon: {
             icon: ''
         },
         name: 'language.en',
-        path: '',
+        path: '/language.en',
+        strict: true,
     },
 ];
 
-export const loggedRoutes: IRoute[] = [
+export const otherRoutes: IRoute[] = [
     {
-        component: ConferenceList,
+        component: BlogItem,
+        icon: {
+            icon: '',
+        },
+        name: 'blog',
+        path: '/blog/:slug',
+        realPath: '',
+    },
+    {
+        component: ConferenceItem,
         icon: {
             icon: '',
         },
         name: 'conferences',
-        path: '/conferences/:city([a-z]+)-:date([0-9]{4}\-[0-9]{2}\-[0-9]{2})',
-        realPath: '/conferences/city',
+        path: '/conferences/:city([a-z]+)-:date([0-9]{4}-[0-9]{2}-[0-9]{2})',
+        realPath: '',
     }
 ];
 
 export const navbarRoutes: IRoute[] = [
     {
         component: Welcome,
+        exact: true,
         icon: {
             icon: 'home',
         },
         name: 'home',
-        path: '/:language([a-z]{2})?',
+        path: '/',
         realPath: '/',
     },
     {
@@ -76,6 +97,16 @@ export const navbarRoutes: IRoute[] = [
         realPath: '/conferences',
     },
     {
+        component: BlogList,
+        icon: {
+            icon: 'newspaper',
+            type: 'far'
+        },
+        name: 'blog',
+        path: '/blog',
+        realPath: '/blog',
+    },
+    {
         component: Contact,
         icon: {
             icon: 'envelope'
@@ -86,7 +117,7 @@ export const navbarRoutes: IRoute[] = [
 ];
 
 export const routes: IRoute[] = [
-    ...loggedRoutes,
+    ...otherRoutes,
     ...navbarRoutes,
     ...connexionRoutes,
     ...languageRoutes,

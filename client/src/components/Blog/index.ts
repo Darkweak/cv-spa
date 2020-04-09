@@ -1,2 +1,2 @@
-export * from './ConferenceItem';
-export * from './ConferenceList';
+export * from './BlogItem';
+export * from './BlogList';

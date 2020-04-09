@@ -123,7 +123,8 @@ Ce sont des solutions tirées arbitrairement qui vous permettront de sécuriser 
 Nous voulons aussi déployer de nouveaux services et aussi rajouter des instances de services déjà déployés afin d''accroître la tenue de charge du serveur contenant notre application et cela à chaud, sans redémarrage du reverse-proxy. De plus nous aimerions avoir possiblement plusieurs applications totalement différentes, par exemple un serveur Teamspeak, un site web avec une API en PHP, un front en ReactJS, un petit serveur web en Go, et une instance d''un serveur web Tomcat.
 
 Enfin nous voulons pouvoir déployer l''application très rapidement. Nous devrions avoir différents systèmes d''exploitation pour gérer tout cela, cependant grâce à Docker, à l''orchestration de Docker Swarm et la gestion des services grâce à Traefik nous allons le faire facilement'", "'Marriott Rive Gauche'", "'2019-10-25'", "'conferences/paris-25-10-2019.png'", "'https://event.afup.org/forumphp2019/programme/#3022'", "'Gérez le Traefik de vos services'", "'Paris'", "'75014'"]
-					]
+					],
+					true
 				)
 		);
 	}

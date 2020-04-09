@@ -100,8 +100,8 @@ HTML
 	{
 		$this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-		$this->article = $this->connection->fetchAll("SELECT id FROM article")[1]['id'];
-		$this->insertTexts();
+		$this->article = $this->connection->fetchAll("SELECT id FROM article ORDER BY created_at")[1]['id'];
+		$this->insertTexts(17);
 		$this->insertCodePackages(16);
 	}
 

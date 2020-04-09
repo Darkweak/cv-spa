@@ -1,16 +1,15 @@
 api_platform:
-    title: Hello API Platform
+    title: devcv | Sylvain COMBRAQUE
     version: 1.0.0
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
         json: ['application/merge-patch+json']
-    swagger:
-        versions: [3]
-    # Mercure integration, remove if unwanted
-    mercure:
-        hub_url: '%env(MERCURE_SUBSCRIBE_URL)%'
     collection:
         pagination:
             client_items_per_page: true
             items_per_page_parameter_name: perPage
+    enable_swagger: false
+    enable_swagger_ui: false
+    enable_entrypoint: false
+    enable_docs: false

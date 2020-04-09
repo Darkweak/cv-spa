@@ -2,25 +2,18 @@
 
 namespace App\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-
 trait TranslatableTitleTrait
 {
-	/**
-	 * @Gedmo\Translatable
-	 * @ORM\Column
-	 */
 	private $title;
 
-	public function getTitle(): string
+	public function getTitle(): ?string
 	{
-		return $this->title;
+		return $this->getTranslation()->getTitle();
 	}
 
 	public function setTitle(string $title): self
 	{
-		$this->title = $title;
+		$this->getTranslation()->setTitle($title);
 		return $this;
 	}
 }

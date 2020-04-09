@@ -25,21 +25,16 @@ final class Version20190820095032 extends AbstractMigration
 		$mh = new MigrationHelper();
 		$this->addSql($mh->insert(
 			'article',
-			['image', 'title', 'content', 'slug'],
+			['image'],
 			[
 				[
 					"'https://sylvaincdn.000webhostapp.com/devcv/traefik.png'",
-					"'Implement Traefik Into API Platform Dockerized'",
-					"''",
-					"'implement-traefik-into-api-platform-dockerized'",
 				],
 				[
 					"'https://sylvaincdn.000webhostapp.com/devcv/ssr.png'",
-					"'From Client Side Rendered to Server Side Rendered applications using Node.js'",
-					"''",
-					"'from-client-side-rendered-to-server-side-rendered-applications-using-node-js'",
 				],
-			]
+			],
+			true
 		));
 	}
 

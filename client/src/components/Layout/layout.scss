@@ -1,0 +1,17 @@
+:root {
+    --menu-width: 22px;
+    --menu-height: 2px;
+    --transition: all 0.5s;
+}
+
+.return-to-top {
+    width: 2.5rem;
+    height: 2.5rem;
+    right: 1rem;
+    bottom: 1rem;
+    background-color: rgba(0,0,0,0.2);
+
+    &:hover {
+        background-color: rgba(0,0,0,0.5);
+    }
+}

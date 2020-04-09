@@ -50,8 +50,20 @@
       "error": "Une erreur est survenue, veuillez réessayer plus tard"
     }
   },
+  "footer": {
+    "developped": "Développé par",
+    "made": "Fait avec",
+    "find": "Retrouvez moi sur"
+  },
   "loader": {
+    "article": {
+      "item": "Chargement de l'article...",
+      "list": {
+        "default": "Chargement des articles..."
+      }
+    },
     "conference": {
+      "item": "Chargement de la conférence...",
       "list": {
         "default": "Chargement des conférences...",
         "last": "Chargement des 2 dernières conférences..."
@@ -67,6 +79,7 @@
       "logout": "Déconnexion",
       "register": "Inscription"
     },
+    "blog": "Blog",
     "conferences": "Conférences",
     "contact": "Contact",
     "home": "Accueil",
@@ -77,20 +90,64 @@
     }
   },
   "pages": {
+    "article": {
+      "list": {
+        "title": "Liste des articles"
+      },
+      "wave": {
+        "subtitle": "Articles techniques",
+        "title": "Blog"
+      }
+    },
     "conferences": {
-      "title": "Conférences"
+      "item": {
+        "title": "Conférence %s"
+      },
+      "list": {
+        "title": "Liste de conférences"
+      },
+      "wave": {
+        "subtitle": "Passées et à venir",
+        "title": "Conférences"
+      }
     },
     "contact": {
-      "title": "Me contacter"
+      "wave": {
+        "subtitle": "",
+        "title": "Me contacter"
+      }
     },
     "home": {
-      "title": "Bienvenue"
-    },
-    "login": {
-      "title": "Connexion"
-    },
-    "register": {
-      "title": "Inscription"
+      "section": {
+        "0": {
+          "descriptions": [
+            "Je m'appelle Sylvain COMBRAQUE et je suis actuellement développeur full-stack chez",
+            "passioné par le développement, en particulier le développement web car cela permet de mettre à parti la créativité d'une personne."
+          ],
+          "title": "Qui suis-je ?"
+        },
+        "1": {
+          "descriptions": [
+            "Créateur d'un système de cache pour Træfik nommé",
+            "Ce système de cache est compatible avec n'importe quel reverse proxy (Apache, Nginx) depuis la v1.1. J'ai pu notament expérimenter la mise en place d'un template pour une marketplace que vous pouvez retrouver le site à",
+            "cette adresse",
+            "Ce service est open-source, gratuit et sans publicités, vous avez toutes les sources disponibles sur mon Github",
+            "Par exemple ce projet m'a permis de mettre en pratique API Platform (ReactJS pour la partie client, Symfony pour le back-office) avec Traefik (pour la gestion des services avec un reverse proxy et le load-balancing), NodeJS (pour le Server-Side Rendering du client), le tout packagé avec Swarm (pour l'orchestration et le scaling des conteneurs)"
+          ],
+          "title": "Un développeur passionné"
+        },
+        "2": {
+          "descriptions": [
+            "Voir toutes les conférences"
+          ],
+          "title": "Mes dernières conférences"
+        }
+      },
+      "wave": {
+        "download": "Télécharger mon CV",
+        "subtitle": "Développeur - Conférencier",
+        "title": "Sylvain COMBRAQUE"
+      }
     }
   }
 }

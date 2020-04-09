@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Traits\ArticleTrait;
 use App\Traits\IdTrait;
+use App\Traits\TimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
@@ -15,6 +17,7 @@ class CodePackage
 {
 	use IdTrait;
 	use ArticleTrait;
+	use TimestampableTrait;
 
 	/**
 	 * @ORM\ManyToOne(targetEntity=App\Entity\Article::class, inversedBy="codePackages")
@@ -23,6 +26,7 @@ class CodePackage
 
 	/**
 	 * @ORM\OneToMany(targetEntity=Code::class, mappedBy="codePackage")
+	 * @Groups({"article_list", "article_item"})
 	 */
 	private $codes;
 

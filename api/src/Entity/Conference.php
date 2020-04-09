@@ -10,7 +10,9 @@ use App\Traits\IdTrait;
 use App\Traits\ImageTrait;
 use App\Traits\LinkTrait;
 use App\Traits\NameTrait;
+use App\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -18,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     	attributes={"order"={"date": "DESC"}},
  *     	collectionOperations={
  *     		"get"={
- *     			"normaliation_context"={"groups"={"conference_list"}}
+ *     			"normalization_context"={"groups"={"conference_list"}}
  * 			},
  *     		"post"={
  *     			"security"={"is_granted('ROLE_ADMIN')"}
@@ -26,19 +28,19 @@ use Symfony\Component\Validator\Constraints as Assert;
  *	 	},
  *     	itemOperations={
  *     		"get"={
- *     			"normaliation_context"={"groups"={"conference_list"}}
- * 			},
+ *             	"normaliation_context"={"groups"={"conference_list"}},
+ *         	},
  *     		"patch"={
- *     			"security"={"is_granted('ROLE_ADMIN')"},
- *     			"normaliation_context"={"groups"={"conference_list"}}
+ *     			"security"="is_granted('ROLE_ADMIN')",
+ *     			"normalization_context"={"groups"={"conference_list"}}
  * 			},
  *     		"delete"={
- *     			"security"={"is_granted('ROLE_ADMIN')"},
- *     			"normaliation_context"={"groups"={"conference_list"}}
+ *     			"security"="is_granted('ROLE_ADMIN')",
+ *     			"normalization_context"={"groups"={"conference_list"}}
  * 			}
  *	 	}
  * )
- * @ORM\Entity(repositoryClass=ConferenceRepository::class)
+ * @ORM\Entity
  */
 class Conference
 {
@@ -48,15 +50,18 @@ class Conference
 	use LinkTrait;
 	use NameTrait;
 	use CityTrait;
+	use TimestampableTrait;
 
 	/**
 	 * @ORM\Column(type="text")
+	 * @Groups({"conference_item"})
 	 * @Assert\NotBlank
 	 */
 	private $abstract;
 
 	/**
 	 * @ORM\Column
+	 * @Groups({"conference_item"})
 	 * @Assert\NotBlank
 	 */
 	private $street;

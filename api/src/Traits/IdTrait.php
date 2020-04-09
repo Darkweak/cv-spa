@@ -12,7 +12,7 @@ trait IdTrait
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="uuid")
      */
-    private $id;
+    protected $id;
 
     public function getId(): string
     {

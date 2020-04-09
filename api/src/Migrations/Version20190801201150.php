@@ -174,6 +174,7 @@ final class Version20190801201150 extends AbstractMigration
 						'site_tag',
 						['site_id', 'tag_id'],
 						$site,
+						false,
 						true
 					)
 			);

@@ -8,10 +8,15 @@ use Doctrine\Migrations\AbstractMigration;
 
 abstract class AbstractTranslatedTextMigration extends AbstractMigration
 {
-	protected $text;
+	protected $texts;
 	protected $codePackages;
 
-	protected function getTranslatedTexts(): array
+	protected function getTranslatedTextsFR(): array
+	{
+		return [];
+	}
+
+	protected function getTranslatedTextsEN(): array
 	{
 		return [];
 	}
@@ -23,27 +28,29 @@ abstract class AbstractTranslatedTextMigration extends AbstractMigration
 
 	protected function insertTranslatedTexts(): void
 	{
-		$texts = $this->getTranslatedTexts();
+		$textsFR = $this->getTranslatedTextsFR();
+		$textsEN = $this->getTranslatedTextsEN();
 		$mh = new MigrationHelper();
-		for ($i = 0; $i < count($texts); $i++) {
+		for ($i = 0; $i < count($this->texts); $i++) {
 			$this->addSql(
 				$mh->insert(
 					'translations_text',
 					[
+						'description',
 						'locale',
-						'object_class',
-						'field',
-						'foreign_key',
-						'content'
+						'text_id',
 					],
 					[
 						[
+							"'".$textsFR[$i]."'",
 							"'fr'",
-							"'App\Entity\Text'",
-							"'content'",
-							"'".$this->text[$i]['id']."'",
-							"'".$texts[$i]."'"
-						]
+							"'".$this->texts[$i]['id']."'",
+						],
+						[
+							"'".$textsEN[$i]."'",
+							"'en'",
+							"'".$this->texts[$i]['id']."'",
+						],
 					]
 				)
 			);

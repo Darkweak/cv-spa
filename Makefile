@@ -1,10 +1,12 @@
-.PHONY: build cache composer-install composer-update help install migration-create migration-diff repopulate-db up update
+.PHONY: build build-client build-server cache composer-install composer-update copy-files help install migration-create migration-diff repopulate-db up update update-db
 
 CONFIG_DIR=api/config
 DC=docker-compose
 DC_UP=$(DC) up -d
 DC_EXEC=$(DC) exec php
 BIN_CONSOLE=$(DC_EXEC) bin/console
+COPY_FILES_CLIENT=cp ./client/tsconfig.bak ./client/tsconfig.json
+PREPARE_BUILD=$(COPY_FILES_CLIENT) && docker-compose exec client yarn
 
 help:
 	@grep -E '(^[0-9a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-25s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
@@ -12,6 +14,16 @@ help:
 build: ## Build
 	$(DC) build
 	$(DC_UP)
+
+build-client: ## Build project
+	$(PREPARE_BUILD) build
+	$(MAKE) build-server
+	$(MAKE) up
+
+build-server: ## Build server project
+	$(PREPARE_BUILD) server-build
+	$(DC_BUILD) ssr
+	$(MAKE) up
 
 cache: ## Clear cache
 	$(BIN_CONSOLE) cache:clear
@@ -21,6 +33,11 @@ composer-install: ## Install composer packages
 
 composer-update: ## Update composer
 	$(DC_EXEC) composer update
+
+copy-files: ## Setup for build project
+	cp .env.dist .env
+	$(MAKE) up
+	$(MAKE) build
 
 create-db: ## Create database
 	$(BIN_CONSOLE) doctrine:database:create
@@ -69,3 +86,6 @@ update: ## Update containers composer packages then re-up containers
 	$(DC) pull
 	$(MAKE) composer-update
 	$(MAKE) up
+
+update-db: ## Update database schema force
+	$(BIN_CONSOLE) doctrine:schema:update --force
