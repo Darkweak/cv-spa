@@ -8,6 +8,7 @@ $grid-breakpoints: (
 
 .card > .card-img-overlay {
   background: rgba(90,97,105,.6);
+  padding: 1.25rem;
 
   &:hover {
     background: rgba(90,97,105,0.1);

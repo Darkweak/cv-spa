@@ -8,7 +8,6 @@ import { Container } from 'react-bootstrap';
 import { Conference, ConferenceInstance } from '../../actions';
 import { BaseStoreContext, SET_CONFERENCE } from '../../contexts/BaseStoreContext';
 import { PageType } from '../interface';
-import { List } from './List';
 
 export const Item: PageType = () => {
     const { city, date } = useParams();
@@ -52,3 +51,5 @@ Item.getInitialProps = ([,,, slug]: [string, string, string, string]) => {
             }))
     ];
 };
+
+export default Item;

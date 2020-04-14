@@ -2,12 +2,31 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Traits\IdTrait;
 use App\Traits\LinkTrait;
 use App\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"competence_list"}}
+ *	 		}
+ *	 	},
+ *     	itemOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"competence_item"}}
+ *	 		},
+ *     		"patch"={
+ *     			"normalization_context"={"groups"={"competence_list"}}
+ * 			},
+ *     		"delete"
+ *	 	},
+ *    	normalizationContext={"groups"={"competence_list"}},
+ *     	security="is_granted('ROLE_ADMIN')"
+ * )
  * @ORM\Entity
  */
 class Competence

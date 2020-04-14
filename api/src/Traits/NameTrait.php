@@ -10,7 +10,16 @@ trait NameTrait
 {
 	/**
 	 * @ORM\Column
-	 * @Groups({"article_list", "article_item", "conference_item"})
+	 * @Groups({
+	 *     "article_list",
+	 *     "article_item",
+	 *     "category_list",
+	 *     "conference_item",
+	 *     "competence_list",
+	 *     "diploma_list",
+	 *     "job_list",
+	 *     "site_list"
+	 * })
 	 * @Assert\NotBlank
 	 */
 	private $name;

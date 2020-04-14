@@ -1,5 +1,5 @@
 import express from 'express';
-import React from 'react';
+import path from 'path';
 import { navbarRoutes, routes } from "../routes";
 import { Article, ArticleInstance, Conference, ConferenceInstance } from '../actions';
 import { matchRoutes } from 'react-router-config';
@@ -7,8 +7,9 @@ import { render } from './render';
 
 const PORT = 3000;
 const app = express();
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use('/favicon.png', express.static('public/favicon.png'));
 app.use('/dist', express.static('public/dist'));
-app.use('/icon.png', express.static('public/icon.png'));
 
 app.get('/sitemap', async (req: any, res: any) => {
     let content: any[] = [];
@@ -21,13 +22,13 @@ app.get('/sitemap', async (req: any, res: any) => {
         articles,
         conferences
     ]: [ArticleInstance[], ConferenceInstance[]]) => {
-        articles.map(article => {
+        articles.forEach(article => {
             const t: any = article.translations;
             Object
                 .keys(t)
                 .map((l) => routeList.push({ path: `/blog/${ l }/${ t[l].slug }` }));
         });
-        conferences.map(conference => routeList.push({ path: conference.to }));
+        conferences.forEach(conference => routeList.push({ path: conference.to }));
     }).catch(console.log);
     routeList.map((sitemapRoute: { path: string }) => content.push(
         `<url>
@@ -48,19 +49,20 @@ app.get('/sitemap', async (req: any, res: any) => {
 app.get('*', async (req: any, res: any) => {
     let state = {};
     const actions: any[] = [];
+
     matchRoutes(routes.map(r => ({ ...r, exact: true, path: `/:language([a-z]{2})${r.path}` })), req.path)
         .map(({ route }: any) =>
             route.component?.getInitialProps ?
                 route.component.getInitialProps(req.path.split('/')) :
-                null
+                []
         )
         .map(action => actions.push(...action));
 
-    await Promise.all(actions).then((result: any) => {
-        result.map((r: any) => {
-            state = {...state, ...r}
-        })
-    }).catch(console.log);
+    await Promise
+        .all(actions)
+        .then((result: any) => result.forEach(
+            (r: any) => state = {...state, ...r}
+        )).catch(console.log);
 
     const content = render({}, req.path, state);
     res.send(content);

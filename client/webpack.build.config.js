@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = {
-  target: 'node',
+  target: 'web',
+  devtool: 'source-map',
   mode: 'production',
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -27,28 +28,39 @@ module.exports = {
         ],
       },
       {
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.[jt]sx?$/
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          minChunks: 2,
+        },
+        default: {
+          minChunks: 2,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
   plugins: [
+    new LoadablePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        REACT_APP_API_ENTRYPOINT: JSON.stringify('http://api.domain.com'),
-        REACT_APP_DOMAIN: JSON.stringify('http://localhost:3000'),
-        REACT_APP_NAME: JSON.stringify('APP name'),
+        REACT_APP_API_ENTRYPOINT: JSON.stringify(process.env.REACT_APP_API_ENTRYPOINT),
+        REACT_APP_DOMAIN: JSON.stringify(process.env.REACT_APP_DOMAIN),
+        REACT_APP_NAME: JSON.stringify(process.env.REACT_APP_NAME),
       },
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: "[name].css",
       chunkFilename: "[id].css"
     })
@@ -56,15 +68,17 @@ module.exports = {
   resolve: {
     extensions: [
       '.js',
+      '.jsx',
       '.css',
       '.scss',
       '.tsx',
       '.ts'
     ]
   },
+  node: { fs: 'empty', net: 'empty' },
   output: {
-    globalObject: 'typeof self !== \'undefined\' ? self : this',
-    filename: 'bundle.js',
+    filename: '[chunkhash].[name].bundle.js',
+    chunkFilename: '[chunkhash].[name].bundle.1_0.chunk.js',
     path: path.resolve(__dirname, 'public/dist')
   }
 };

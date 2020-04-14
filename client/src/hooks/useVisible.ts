@@ -1,7 +1,7 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import { useWindowSize } from './';
 
-export const useVisible = (ref: MutableRefObject<any>, margin: number = 0) => {
+export const useVisible = (ref: RefObject<HTMLDivElement>, margin: number = 0) => {
     const {height} = useWindowSize();
     const [isIntersecting, setIntersecting] = useState(false);
     const [current, setCurrent] = useState<any>();
@@ -19,6 +19,9 @@ export const useVisible = (ref: MutableRefObject<any>, margin: number = 0) => {
                 rootMargin: `${(height ? (height - margin - 1) : 0)}px 0px ${margin}px 0px`
             }
         );
+        if (!observer) {
+            return;
+        }
         if (current) {
             observer.observe(current);
             return () => {

@@ -1,0 +1,495 @@
+{
+  "errors": [],
+  "warnings": [
+    "./src/index.tsx 37:16-92\nCritical dependency: the request of a dependency is an expression",
+    "./node_modules/express/lib/view.js 81:13-25\nCritical dependency: the request of a dependency is an expression\n @ ./node_modules/express/lib/application.js\n @ ./node_modules/express/lib/express.js\n @ ./node_modules/express/index.js\n @ ./src/server/index.tsx\n @ ./src sync ^.*$\n @ ./src/index.tsx"
+  ],
+  "version": "4.41.5",
+  "hash": "88397d7a7a1f9d0b1850",
+  "publicPath": "",
+  "outputPath": "/usr/src/client/public/dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.css",
+      "1888a8fc75092b08cc62.main.bundle.js",
+      "main.css.map",
+      "1888a8fc75092b08cc62.main.bundle.js.map"
+    ],
+    "vendors~main": [
+      "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
+      "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "1888a8fc75092b08cc62.main.bundle.js",
+      "size": 83239,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "1888a8fc75092b08cc62.main.bundle.js.map",
+      "size": 172588,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "2663855e494a9f1ece98.3.bundle.1_0.chunk.js",
+      "size": 16968,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "2663855e494a9f1ece98.3.bundle.1_0.chunk.js.map",
+      "size": 33577,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
+      "size": 1035592,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "vendors~main"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map",
+      "size": 2242779,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "vendors~main"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "cc5cfe06b4be00300984.2.bundle.1_0.chunk.js",
+      "size": 1008197,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "cc5cfe06b4be00300984.2.bundle.1_0.chunk.js.map",
+      "size": 2377215,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "main.css",
+      "size": 15788,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "main.css.map",
+      "size": 14924,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        1,
+        0
+      ],
+      "assets": [
+        "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
+        "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map",
+        "main.css",
+        "1888a8fc75092b08cc62.main.bundle.js",
+        "main.css.map",
+        "1888a8fc75092b08cc62.main.bundle.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        1,
+        0
+      ],
+      "assets": [
+        "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
+        "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map",
+        "main.css",
+        "1888a8fc75092b08cc62.main.bundle.js",
+        "main.css.map",
+        "1888a8fc75092b08cc62.main.bundle.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 5,
+      "debug": false
+    }
+  },
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/app.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/components/Card/cardOverlay.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/components/Layout/layout.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/components/Loader/spinner.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/components/Table/table.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/components/Visible/fade.scss"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "/usr/src/client/public/dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js??ref--4-2!node_modules/sass-loader/dist/cjs.js??ref--4-3!src/pages/scss/career.scss"
+    }
+  ]
+}

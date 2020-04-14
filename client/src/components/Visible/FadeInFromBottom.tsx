@@ -8,7 +8,7 @@ interface IFadeInFromBottom {
 }
 
 export const FadeInFromBottom: React.FC<IFadeInFromBottom & ClassNameInterface> = ({children, className, delay}) => {
-    const ref: any = createRef();
+    const ref = createRef<HTMLDivElement>();
     const isVisible = useVisible(ref, -50);
 
     return (

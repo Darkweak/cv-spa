@@ -1,7 +1,8 @@
 import {
-    Contact,
     BlogItem,
     BlogList,
+    Contact,
+    CreationList,
     Item as ConferenceItem,
     List as ConferenceList,
     Login,
@@ -10,11 +11,14 @@ import {
 import { AllowedLanguages } from './contexts';
 import { RouteProps } from 'react-router-dom';
 import { IconInterface } from './components/Layout';
+import Skills from './pages/Skills';
+import Career from './pages/Career';
 
 export interface IRoute extends RouteProps {
     changeLanguage?: (setSelectedLanguage: (language: AllowedLanguages) => void) => void,
     handleClick?: ((...v: any) => void) | boolean,
     icon: IconInterface,
+    modulePath?: string,
     name: string,
     realPath?: string,
 }
@@ -25,6 +29,7 @@ export const connexionRoutes: IRoute[] = [
         icon: {
             icon: 'input'
         },
+        modulePath: './pages/Login',
         name: 'account.login',
         path: '/login',
     },
@@ -61,6 +66,7 @@ export const otherRoutes: IRoute[] = [
         icon: {
             icon: '',
         },
+        modulePath: './pages/Blog/Item',
         name: 'blog',
         path: '/blog/:slug',
         realPath: '',
@@ -70,6 +76,7 @@ export const otherRoutes: IRoute[] = [
         icon: {
             icon: '',
         },
+        modulePath: './pages/Conferences/Item',
         name: 'conferences',
         path: '/conferences/:city([a-z]+)-:date([0-9]{4}-[0-9]{2}-[0-9]{2})',
         realPath: '',
@@ -83,6 +90,7 @@ export const navbarRoutes: IRoute[] = [
         icon: {
             icon: 'home',
         },
+        modulePath: './pages/Welcome',
         name: 'home',
         path: '/',
         realPath: '/',
@@ -92,6 +100,7 @@ export const navbarRoutes: IRoute[] = [
         icon: {
             icon: 'microphone',
         },
+        modulePath: './pages/Conferences/List',
         name: 'conferences',
         path: '/conferences',
         realPath: '/conferences',
@@ -102,15 +111,49 @@ export const navbarRoutes: IRoute[] = [
             icon: 'newspaper',
             type: 'far'
         },
+        modulePath: './pages/Blog/List',
         name: 'blog',
         path: '/blog',
         realPath: '/blog',
+    },
+    {
+        component: Career,
+        icon: {
+            icon: 'newspaper',
+            type: 'far'
+        },
+        modulePath: './pages/Career',
+        name: 'career',
+        path: '/career',
+        realPath: '/career',
+    },
+    {
+        component: Skills,
+        icon: {
+            icon: 'newspaper',
+            type: 'far'
+        },
+        modulePath: './pages/Skills',
+        name: 'skills',
+        path: '/skills',
+        realPath: '/skills',
+    },
+    {
+        component: CreationList,
+        icon: {
+            icon: 'palette',
+        },
+        modulePath: './pages/Creations/List',
+        name: 'creations',
+        path: '/creations',
+        realPath: '/creations',
     },
     {
         component: Contact,
         icon: {
             icon: 'envelope'
         },
+        modulePath: './pages/Contact',
         name: 'contact',
         path: '/contact',
     }

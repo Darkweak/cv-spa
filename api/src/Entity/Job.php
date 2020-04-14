@@ -2,15 +2,33 @@
 
 namespace App\Entity;
 
-use App\Repository\JobRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Traits\CityTrait;
 use App\Traits\IdTrait;
 use App\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=JobRepository::class)
+ * @ApiResource(
+ *     	attributes={"order"={"startedAt": "DESC", "leavedAt": "DESC"}},
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"job_list"}},
+ *     			"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"
+ *	 		},
+ *     		"post"
+ *	 	},
+ *     	itemOperations={
+ *     		"get",
+ *     		"patch",
+ *     		"delete"
+ *	 	},
+ *    	normalizationContext={"groups"={"job_list"}},
+ *     	security="is_granted('ROLE_ADMIN')"
+ * )
+ * @ORM\Entity
  */
 class Job
 {
@@ -21,28 +39,33 @@ class Job
     /**
      * @ORM\Column(type="boolean")
      * @Assert\NotBlank
+	 * @Groups({"job_list"})
      */
     private $isValid;
 
     /**
      * @ORM\Column(type="date")
+	 * @Groups({"job_list"})
      */
     private $startedAt;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+	 * @Groups({"job_list"})
      */
     private $leavedAt;
 
     /**
      * @ORM\Column
      * @Assert\NotBlank
+	 * @Groups({"job_list"})
      */
     private $institute;
 
     /**
      * @ORM\Column
      * @Assert\NotBlank
+	 * @Groups({"job_list"})
      */
     private $referent;
 

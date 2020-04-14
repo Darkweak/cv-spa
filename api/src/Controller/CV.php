@@ -29,8 +29,8 @@ class CV
 				$this->environment->render(
 					"cv.html.twig",
 					[
-						'jobs' => $this->entityManager->getRepository(Job::class)->findAll(),
-						'diplomas' => $this->entityManager->getRepository(Diploma::class)->findAll(),
+						'jobs' => $this->entityManager->getRepository(Job::class)->findBy([], ['startedAt' => 'DESC']),
+						'diplomas' => $this->entityManager->getRepository(Diploma::class)->findBy([], ['startedAt' => 'DESC']),
 						'creations' => $this->entityManager->getRepository(Site::class)->findAll(),
 					]
 				)

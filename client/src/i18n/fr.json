@@ -62,6 +62,10 @@
         "default": "Chargement des articles..."
       }
     },
+    "career": {
+      "diplomas": "Chargement des diplômes...",
+      "jobs": "Chargement des emplois..."
+    },
     "conference": {
       "item": "Chargement de la conférence...",
       "list": {
@@ -69,7 +73,9 @@
         "last": "Chargement des 2 dernières conférences..."
       }
     },
-    "default": "Chargement en cours..."
+    "creations": "Chargements des créations...",
+    "default": "Chargement en cours...",
+    "skills": "Chargements des compétences..."
   },
   "navbar": {
     "about": "À propos",
@@ -80,14 +86,17 @@
       "register": "Inscription"
     },
     "blog": "Blog",
+    "career": "Carrière",
     "conferences": "Conférences",
     "contact": "Contact",
+    "creations": "Créations",
     "home": "Accueil",
     "language": {
       "label": "Langage",
       "fr": "Français",
       "en": "Anglais"
-    }
+    },
+    "skills": "Compétences"
   },
   "pages": {
     "article": {
@@ -97,6 +106,17 @@
       "wave": {
         "subtitle": "Articles techniques",
         "title": "Blog"
+      }
+    },
+    "career": {
+      "diplomas": "Diplômes",
+      "fromTo": "Du %s au %s",
+      "fromToToday": "Du %s à aujourd'hui",
+      "jobs": "Emplois",
+      "title": "Emplois et diplômes",
+      "wave": {
+        "subtitle": "Emplois et diplômes",
+        "title": "Carrière"
       }
     },
     "conferences": {
@@ -115,6 +135,15 @@
       "wave": {
         "subtitle": "",
         "title": "Me contacter"
+      }
+    },
+    "creations": {
+      "list": {
+        "title": "Liste des créations"
+      },
+      "wave": {
+        "title": "Créations",
+        "subtitle": "Personnelles et professionnelles"
       }
     },
     "home": {
@@ -147,6 +176,13 @@
         "download": "Télécharger mon CV",
         "subtitle": "Développeur - Conférencier",
         "title": "Sylvain COMBRAQUE"
+      }
+    },
+    "skills": {
+      "title": "Liste des compétences",
+      "wave": {
+        "subtitle": "Techniques et fonctionnelles",
+        "title": "Compétences"
       }
     }
   }

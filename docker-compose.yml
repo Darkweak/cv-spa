@@ -15,18 +15,17 @@ x-networks:
 x-environments-ssr:
   - &environments-ssr
     environment:
-      - REACT_APP_API_ENTRYPOINT=http://api
+      - REACT_APP_API_ENTRYPOINT=http://cache
       - REACT_APP_DOMAIN=${HTTP_OR_SSL}${DOMAIN}
       - REACT_APP_NAME=${APP_NAME}
 
 x-environments:
   - &environments
     environment:
-      - API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT=http://cache-proxy
-      - API_PLATFORM_CLIENT_GENERATOR_OUTPUT=src
-      - REACT_APP_API_ENTRYPOINT=${HTTP_OR_SSL}api.${DOMAIN}
+      - REACT_APP_API_ENTRYPOINT=${HTTP_OR_SSL}cache.${DOMAIN}
       - REACT_APP_DOMAIN=${HTTP_OR_SSL}${DOMAIN}
       - REACT_APP_NAME=${APP_NAME}
+      - SKIP_PREFLIGHT_CHECK=true
 
 services:
   traefik:
@@ -51,13 +50,13 @@ services:
       - APP_ENV=${APP_ENV}
       - APP_NAME=${APP_NAME}
       - APP_SECRET=${APP_SECRET}
-      - CORS_ALLOW_ORIGIN=^.+$$
+      - CORS_ALLOW_ORIGIN=^(${SUBDOMAINS}\.)?${DOMAIN}|localhost|cache$$
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@db/${DB_NAME}
       - EMAIL_USER=${EMAIL_USER}
       - JWT_PASSPHRASE=${JWT}
       - MAILGUN_DOMAIN=${DOMAIN}
       - MAILGUN_KEY=${EMAIL_PASS}
-      - TRUSTED_HOSTS=^(${SUBDOMAINS}\.)?${DOMAIN}|localhost$$
+      - TRUSTED_HOSTS=^(${SUBDOMAINS}\.)?${DOMAIN}|localhost|cache$$
     depends_on:
       - db
       - traefik
@@ -80,7 +79,7 @@ services:
       - traefik.http.routers.api.rule=Host(`api.${DOMAIN}`)
     <<: *networks
 
-  cache-proxy:
+  cache:
     image: ${VARNISH_IMAGE:-quay.io/api-platform/varnish}
     build:
       context: ./api
@@ -132,7 +131,7 @@ services:
     volumes:
       - ./client:/usr/src/client:rw,cached
     labels:
-      - traefik.http.routers.client.rule=Host(`client.domain.com`)
+      - traefik.http.routers.client.rule=Host(`client.${DOMAIN}`)
     <<: *networks
 
   admin:
@@ -158,7 +157,7 @@ services:
     env_file:
       - ./client/.env
     labels:
-      - traefik.http.routers.client.rule=Host(`domain.com`)
+      - traefik.http.routers.ssr.rule=Host(`${DOMAIN}`)
     <<: *environments-ssr
     <<: *networks
 

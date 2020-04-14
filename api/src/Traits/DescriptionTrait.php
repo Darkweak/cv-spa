@@ -10,7 +10,7 @@ trait DescriptionTrait
 {
 	/**
 	 * @ORM\Column(type="text")
-	 * @Groups({"article_list", "article_item"})
+	 * @Groups({"article_list", "article_item", "site_list"})
 	 * @Assert\NotBlank
 	 */
 	private $description;

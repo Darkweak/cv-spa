@@ -11,7 +11,7 @@ trait LinkTrait
 	/**
 	 * @ORM\Column
 	 * @Assert\NotBlank
-	 * @Groups({"conference_item"})
+	 * @Groups({"category_list", "conference_item", "site_list"})
 	 */
 	private $link;
 

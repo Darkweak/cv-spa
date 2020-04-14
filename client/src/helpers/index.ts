@@ -1,5 +1,7 @@
 import jwt_decode from 'jwt-decode';
-import { ArticleInstance, ConferenceInstance } from '../actions';
+import { ArticleInstance, ConferenceInstance, CreationInstance } from '../actions';
+import { JobInstance } from '../actions/job';
+import { DiplomaInstance } from '../actions/diploma';
 
 interface InitialStateInterface {
     blogItem: {
@@ -14,12 +16,18 @@ interface InitialStateInterface {
     conferences: {
         conferences: ConferenceInstance[]
     },
+    creations: {
+        creations: CreationInstance[]
+    },
+    diplomas: DiplomaInstance[],
+    jobs: JobInstance[],
     welcome: {
         conferences: ConferenceInstance[]
     },
 }
 
 export const hasWindow = (): boolean => 'undefined' !== typeof window;
+export const getWindow = (): (Window & typeof globalThis)|undefined => (hasWindow() && window) || undefined;
 export const initialState: InitialStateInterface|undefined = (hasWindow() && window['INITIAL_STATE']) || undefined;
 export const sprintf = (base: string, replacement: string[]): string => base
     .split('%s')

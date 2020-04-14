@@ -62,6 +62,11 @@
         "default": "Loading articles..."
       }
     },
+    "career": {
+      "diplomas": "Loading diplomas...",
+      "jobs": "Loading jobs..."
+    },
+    "creations": "Loadings creations...",
     "conference": {
       "item": "Loading conference...",
       "list": {
@@ -69,7 +74,8 @@
         "last": "Loading last 2 conferences..."
       }
     },
-    "default": "Loading in progress..."
+    "default": "Loading in progress...",
+    "skills": "Loadings skills..."
   },
   "navbar": {
     "about": "About",
@@ -80,14 +86,17 @@
       "register": "Register"
     },
     "blog": "Blog",
+    "career": "Career",
     "conferences": "Conferences",
     "contact": "Contact",
+    "creations": "Creations",
     "home": "Home",
     "language": {
       "label": "Language",
       "fr": "French",
       "en": "English"
-    }
+    },
+    "skills": "Skills"
   },
   "pages": {
     "article": {
@@ -97,6 +106,17 @@
       "wave": {
         "subtitle": "Technical articles",
         "title": "Blog"
+      }
+    },
+    "career": {
+      "fromTo": "From %s to %s",
+      "fromToToday": "From %s to today",
+      "diplomas": "Diplomas",
+      "jobs": "Jobs",
+      "title": "Jobs and diplomas",
+      "wave": {
+        "subtitle": "Jobs and diplomas",
+        "title": "Career"
       }
     },
     "conferences": {
@@ -115,6 +135,15 @@
       "wave": {
         "title": "Contact me",
         "subtitle": ""
+      }
+    },
+    "creations": {
+      "list": {
+        "title": "Creations list"
+      },
+      "wave": {
+        "subtitle": "Personal and professional",
+        "title": "Creations"
       }
     },
     "home": {
@@ -147,6 +176,13 @@
         "download": "Download my CV",
         "title": "Sylvain COMBRAQUE",
         "subtitle": "Developer - Speaker"
+      }
+    },
+    "skills": {
+      "title": "Skills list",
+      "wave": {
+        "subtitle": "Technical and functional",
+        "title": "Skills"
       }
     }
   }

@@ -14,15 +14,17 @@ export const Loading: React.FC<LoadingInterface> = ({ className, text }) => {
     const { translate } = useContext(LanguageContext);
 
     return (
-        <div className='w-100 border d-flex rounded'>
-            <span className='h4 d-flex m-auto p-3'>
-                <span className='my-auto'>
-                    <Spinner/>
+        <div className='py-4 w-100'>
+            <div className='w-100 border d-flex rounded'>
+                <span className='h4 d-flex m-auto p-3'>
+                    <span className='my-auto'>
+                        <Spinner/>
+                    </span>
+                    <span className='pl-2 text-center'>
+                        { translate(`loader.${ text || 'default' }`) }
+                    </span>
                 </span>
-                <span className='pl-2 text-center'>
-                    { translate(`loader.${ text || 'default' }`) }
-                </span>
-            </span>
+            </div>
         </div>
     )
 };

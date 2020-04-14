@@ -9,9 +9,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource(
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"category_list"}},
+ *     			"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"
+ *	 		},
+ *     		"post"
+ *	 	},
+ *     	itemOperations={
+ *     		"get",
+ *     		"patch"={
+ *     			"normalization_context"={"groups"={"category_list"}}
+ * 			},
+ *     		"delete"
+ *	 	},
+ *    	normalizationContext={"groups"={"category_list"}},
+ *     	security="is_granted('ROLE_ADMIN')"
+ * )
  * @ORM\Entity
  */
 class Category
@@ -21,6 +38,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Competence", mappedBy="category")
+	 * @Groups({"category_list"})
      */
     private $competences;
 

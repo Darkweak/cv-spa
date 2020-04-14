@@ -75,6 +75,16 @@ main {
     .btn-outline-#{$color} {
         color: $value;
     }
+    .b-e-t-#{$color} {
+        border-right: 1px solid $value;
+        border-left: 1px solid $value;
+        border-bottom: 1px solid $value;
+    }
+    @each $direction in $directions {
+        .b#{$direction}-#{$color} {
+            border-#{$direction}: 1px solid $value;
+        }
+    }
 }
 
 @each $direction in $directions {
@@ -119,4 +129,32 @@ pre {
 
 code {
     padding: 0.25rem;
+}
+
+
+@media screen and (min-width: 768px){
+    .middle-line {
+        overflow: hidden;
+        text-align: center;
+
+        &:before,
+        &:after {
+            background-color: white;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 10%;
+        }
+
+        &:before {
+            right: 0.5em;
+            margin-left: -50%;
+        }
+        &:after {
+            left: 0.5em;
+            margin-right: -50%;
+        }
+    }
 }

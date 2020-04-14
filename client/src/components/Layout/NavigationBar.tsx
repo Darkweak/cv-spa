@@ -3,7 +3,7 @@ import { navbarRoutes } from '../../routes';
 import './layout.scss';
 import { Container, Nav, Navbar as BNavbar, NavDropdown as BNavDropdown } from 'react-bootstrap';
 import { NavDropdown, NavLink } from './Navbar';
-import { hasWindow } from '../../helpers';
+import { getWindow } from '../../helpers';
 import { AllowedLanguages, LanguageContext } from '../../contexts';
 import { Icon } from './Icon';
 
@@ -26,23 +26,24 @@ const languages: LanguageInterface[] = [
 ];
 
 export const NavBar = () => {
-    const [top, setTop] = useState(hasWindow() && window.scrollY < MAX_SCROLL);
+    const [top, setTop] = useState((getWindow()?.scrollY || 0) < MAX_SCROLL);
     const {language, setSelectedLanguage} = useContext(LanguageContext);
 
     const handleScroll = () => {
-        setTop(hasWindow() && window.scrollY < MAX_SCROLL);
+        setTop((getWindow()?.scrollY || 0) < MAX_SCROLL);
     };
 
     useEffect(() => {
-        hasWindow() && window.addEventListener('scroll', handleScroll);
+        const w = getWindow();
+        w?.addEventListener('scroll', handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => w?.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
         <>
             <BNavbar
-                bg={top ? 'transparent scale-text' : 'gradient'}
+                bg={top ? 'transparent' : 'gradient'}
                 collapseOnSelect
                 expand='lg'
                 sticky='top'

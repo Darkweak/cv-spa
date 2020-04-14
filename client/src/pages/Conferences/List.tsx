@@ -42,3 +42,5 @@ List.getInitialProps = () => {
             }))
     ];
 };
+
+export default List;

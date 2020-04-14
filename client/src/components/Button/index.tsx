@@ -4,6 +4,7 @@ interface CommonButtonInterface {
     outlined?: boolean;
     size?: 'lg' | 'sm';
     type?: 'button' | 'reset' | 'submit';
+    onClick?: () => void;
 }
 
 interface SpecificButtonInterface extends CommonButtonInterface {
@@ -16,17 +17,19 @@ interface ButtonInterface extends SpecificButtonInterface {
 }
 
 const CommonButton: React.FC<ButtonInterface> = ({
-                                                     children,
-                                                     color,
-                                                     outlined,
-                                                     pilled,
-                                                     size,
-                                                     squared,
-                                                     type
-                                                 }) => (
+    children,
+    color,
+    outlined,
+    pilled,
+    size,
+    squared,
+    type,
+    ...rest
+}) => (
     <button
         type={type}
         className={`btn ${size && `btn-${size}`} ${squared ? 'btn-squared' : pilled && 'btn-pill'} btn-${(outlined && 'outline-') || ''}${color}`}
+        {...rest}
     >
         {children}
     </button>

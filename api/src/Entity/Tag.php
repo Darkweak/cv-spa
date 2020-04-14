@@ -16,7 +16,7 @@ class Tag
 	use IdTrait;
 	use NameTrait;
     /**
-     * @ORM\ManyToMany(targetEntity="Site", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity=Site::class, mappedBy="tags")
      */
     private $sites;
 

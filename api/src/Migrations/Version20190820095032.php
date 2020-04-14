@@ -28,10 +28,10 @@ final class Version20190820095032 extends AbstractMigration
 			['image'],
 			[
 				[
-					"'https://sylvaincdn.000webhostapp.com/devcv/traefik.png'",
+					"'/blog/traefik.png'",
 				],
 				[
-					"'https://sylvaincdn.000webhostapp.com/devcv/ssr.png'",
+					"'/blog/ssr.png'",
 				],
 			],
 			true

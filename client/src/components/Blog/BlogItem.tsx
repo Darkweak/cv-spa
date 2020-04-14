@@ -14,10 +14,7 @@ export const BlogItem: React.FC<ConferenceItemInterface> = ({ article }) => {
     return (
         <>
             {
-                !article ?
-                    <div className='py-4 w-100'>
-                        <Loading text={`article.item`}/>
-                    </div> :
+                article ?
                     <div className="col-12">
                         {
                             article?.texts.map((text, index: number) => (
@@ -41,7 +38,8 @@ export const BlogItem: React.FC<ConferenceItemInterface> = ({ article }) => {
                                 </div>
                             ))
                         }
-                    </div>
+                    </div> :
+                    <Loading text={`article.item`}/>
             }
         </>
     )

@@ -1,10 +1,6 @@
-ARG NODE_VERSION=13
-
-FROM node:${NODE_VERSION}-alpine
+FROM node:alpine
 
 WORKDIR /usr/src/client
-
-RUN yarn global add @api-platform/client-generator
 
 COPY package.json yarn.lock ./
 RUN set -eux; \

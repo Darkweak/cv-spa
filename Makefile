@@ -2,11 +2,11 @@
 
 CONFIG_DIR=api/config
 DC=docker-compose
-DC_UP=$(DC) up -d
-DC_EXEC=$(DC) exec php
-BIN_CONSOLE=$(DC_EXEC) bin/console
+DC_UP=$(DC) up -d --remove-orphans
+DC_EXEC=$(DC) exec
+BIN_CONSOLE=$(DC_EXEC) php bin/console
 COPY_FILES_CLIENT=cp ./client/tsconfig.bak ./client/tsconfig.json
-PREPARE_BUILD=$(COPY_FILES_CLIENT) && docker-compose exec client yarn
+PREPARE_BUILD=$(COPY_FILES_CLIENT) && $(DC_EXEC) client yarn && $(DC_EXEC) ssr yarn
 
 help:
 	@grep -E '(^[0-9a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-25s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
@@ -16,23 +16,27 @@ build: ## Build
 	$(DC_UP)
 
 build-client: ## Build project
+	$(MAKE) up
 	$(PREPARE_BUILD) build
+	rm -rf client/public/dist
+	$(DC_EXEC) client yarn build
 	$(MAKE) build-server
+	$(MAKE) cache
 	$(MAKE) up
 
 build-server: ## Build server project
 	$(PREPARE_BUILD) server-build
-	$(DC_BUILD) ssr
+	$(DC_EXEC) ssr yarn server-build
 	$(MAKE) up
 
 cache: ## Clear cache
 	$(BIN_CONSOLE) cache:clear
 
 composer-install: ## Install composer packages
-	$(DC_EXEC) composer install
+	$(DC_EXEC) php composer install
 
 composer-update: ## Update composer
-	$(DC_EXEC) composer update
+	$(DC_EXEC) php composer update
 
 copy-files: ## Setup for build project
 	cp .env.dist .env

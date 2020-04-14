@@ -71,7 +71,7 @@ export abstract class API {
         })
     }
 
-    async getOne({endpoint = ''}: EndpointInterface): Promise<AxiosResponse> {
+    async getOne({endpoint = ''}: EndpointInterface = {}): Promise<AxiosResponse> {
         return this.getRequest().get(`${this.endpoint}${ endpoint }`);
     }
 

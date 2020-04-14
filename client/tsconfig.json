@@ -5,7 +5,7 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "module": "esnext",
-    "target": "es5",
+    "target": "ES6",
     "jsx": "react",
     "lib": [
       "dom",

@@ -9,7 +9,7 @@ trait ImageTrait
 {
 	/**
 	 * @ORM\Column
-	 * @Groups({"article_list", "conference_item", "conference_list"})
+	 * @Groups({"article_list", "conference_item", "conference_list", "site_list"})
 	 */
 	private $image;
 

@@ -1,0 +1,34 @@
+$primary: #0c5460;
+$secondary: #155724;
+
+$colors: (
+        primary: (
+                bg: #d1ecf1,
+                border: #c3e6cb,
+                color: $primary,
+        ),
+        success: (
+                bg: #d4edda,
+                border: #c3e6cb,
+                color: $secondary,
+        ),
+);
+
+.bs-alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+@each $color, $value in $colors {
+  .bs-bg-#{$color} {
+    background-color: map_get($value, 'color');
+  }
+  .bs-alert-#{$color} {
+    background-color: map_get($value, 'bg');
+    border-color: map_get($value, 'border');
+    color: map_get($value, 'color');
+  }
+}

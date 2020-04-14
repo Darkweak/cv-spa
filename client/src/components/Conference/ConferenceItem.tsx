@@ -11,10 +11,7 @@ interface ConferenceItemInterface {
 export const ConferenceItem: React.FC<ConferenceItemInterface> = ({ conference }) => (
     <div className='row m-0'>
         {
-            !conference ?
-                <div className='py-4 w-100'>
-                    <Loading text={`conference.item`}/>
-                </div> :
+            conference ?
                 <>
                     <div className='col-sm-4'>
                         <div className='flex-column sticky-top py-5 z-1'>
@@ -45,7 +42,8 @@ export const ConferenceItem: React.FC<ConferenceItemInterface> = ({ conference }
                             ))
                         }
                     </div>
-                </>
+                </> :
+                <Loading text={`conference.item`}/>
         }
     </div>
 );

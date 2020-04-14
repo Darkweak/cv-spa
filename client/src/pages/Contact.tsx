@@ -18,3 +18,5 @@ export const Contact: React.FC = () => {
         </Layout>
     )
 };
+
+export default Contact;

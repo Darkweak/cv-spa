@@ -1,7 +1,7 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { languages } from '../i18n/i18n';
 import { ClientProvider } from './ClientContext';
-import { hasWindow, Language } from '../helpers';
+import { getWindow, Language } from '../helpers';
 import { useParams, useLocation, useRouteMatch, useHistory } from 'react-router';
 
 interface PageTranslationInterface {
@@ -72,7 +72,7 @@ const getInitialState = (language?: string): AllowedLanguages => {
     const state = (
         language ||
         (new Language().get() as AllowedLanguages) ||
-        ((hasWindow() && navigator.language.split('-')[0] as AllowedLanguages) || '')
+        ((getWindow()?.navigator.language.split('-')[0] as AllowedLanguages) || '')
     );
 
     if (allowedLanguages.includes(state)) {

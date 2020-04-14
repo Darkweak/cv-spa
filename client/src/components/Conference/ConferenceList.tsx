@@ -18,7 +18,7 @@ export const ConferenceList: React.FC<ConferenceListInterface> = ({
     perRow = 2
 }) => {
     const { conferences: { [conferenceContext]: list }, dispatch } = useContext(BaseStoreContext);
-    const [conferences, setConferences] = useState<ConferenceInstance[]>(list);
+    const [conferences, setConferences] = useState<ConferenceInstance[]>(list || []);
     useEffect(() => {
         if (!list.length) {
             new Conference({ filters: { perPage: (max || '').toString() } })
@@ -39,16 +39,16 @@ export const ConferenceList: React.FC<ConferenceListInterface> = ({
     return (
         <div className='row m-0'>
             {
-                !conferences.length ?
-                    <div className='py-4 w-100'>
-                        <Loading text={`conference.list.${ loadingText || 'default' }`}/>
-                    </div> :
+                conferences.length ?
                     conferences.map((conference, index) => (
                         <div className={`col-md-${ 12 / perRow } p-2`} key={ index }>
-                            <Card item={ conference }/>
+                            <Card item={ conference }>
+                                <h2 className='d-block card-title fs-5 font-weight-bolder'>{ conference.city }</h2>
+                                <span className='d-block card-text font-weight-bold m-0'>{ new Date(conference.date).toLocaleDateString() }</span>
+                            </Card>
                         </div>
-                    ))
-
+                    )) :
+                    <Loading text={`conference.list.${ loadingText || 'default' }`}/>
             }
         </div>
     );

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Traits\DescriptionTrait;
 use App\Traits\IdTrait;
 use App\Traits\ImageTrait;
@@ -14,6 +15,24 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource(
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"site_list"}},
+ *     			"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"
+ *	 		},
+ *     		"post"
+ *	 	},
+ *     	itemOperations={
+ *     		"get",
+ *     		"patch"={
+ *     			"normalization_context"={"groups"={"site_list"}}
+ * 			},
+ *     		"delete"
+ *	 	},
+ *    	normalizationContext={"groups"={"site_list"}},
+ *     	security="is_granted('ROLE_ADMIN')"
+ * )
  * @ORM\Entity
  */
 class Site
@@ -25,9 +44,9 @@ class Site
 	use NameTrait;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="sites")
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="sites")
      * @Assert\NotBlank
-     * @Groups({"get_collection_site"})
+     * @Groups({"site_list"})
      */
     private $tags;
 

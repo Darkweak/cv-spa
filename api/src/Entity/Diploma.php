@@ -2,13 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Traits\CityTrait;
 use App\Traits\IdTrait;
 use App\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource(
+ *     	attributes={"order"={"startedAt": "DESC", "obtainedAt": "DESC"}},
+ *     	collectionOperations={
+ *     		"get"={
+ *     			"normalization_context"={"groups"={"diploma_list"}},
+ *     			"security"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')"
+ *	 		},
+ *     		"post"
+ *	 	},
+ *     	itemOperations={
+ *     		"get",
+ *     		"patch",
+ *     		"delete"
+ *	 	},
+ *    	normalizationContext={"groups"={"diploma_list"}},
+ *     	security="is_granted('ROLE_ADMIN')"
+ * )
  * @ORM\Entity
  */
 class Diploma
@@ -19,23 +38,27 @@ class Diploma
 
     /**
      * @ORM\Column(type="date")
+	 * @Groups({"diploma_list"})
      */
     private $startedAt;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+	 * @Groups({"diploma_list"})
      */
     private $obtainedAt;
 
     /**
      * @ORM\Column
      * @Assert\NotBlank
+	 * @Groups({"diploma_list"})
      */
     private $institute;
 
     /**
      * @ORM\Column
      * @Assert\NotBlank
+	 * @Groups({"diploma_list"})
      */
     private $linkCity;
 

@@ -1,23 +1,23 @@
 {
   "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
+    "@loadable/babel-plugin",
     "css-modules-transform",
-    "@babel/plugin-transform-runtime"
+    "dynamic-import-node",
+    "dynamic-import-webpack"
   ],
   "presets": [
+    "@babel/env",
     "@babel/react",
-    "@babel/typescript",
-    "@babel/env"
+    "@babel/typescript"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "react-hot-loader/babel",
-        "transform-decorators-legacy",
-        "transform-object-rest-spread"
-      ],
       "presets": [
-        ["env", { "modules": false }],
-        "react"
+        ["@babel/env", { "modules": false }],
+        "@babel/react"
       ]
     }
   }

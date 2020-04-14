@@ -28,7 +28,7 @@ export const BlogItem: PageType = () => {
                 })
             });
         }
-    }, [dispatch, language, slug]);
+    }, [baseArticle, dispatch, language, slug]);
     const title = article?.translations[language].title || '';
     const t = translate('loader.article.item');
     return (
@@ -65,3 +65,5 @@ BlogItem.getInitialProps = ([,language, , slug]: [string, string, string, string
             .catch(() => {}),
     ];
 };
+
+export default BlogItem;

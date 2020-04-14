@@ -10,3 +10,5 @@ export const Register = () => (
         </div>
     </Layout>
 );
+
+export default Register;

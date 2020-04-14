@@ -10,14 +10,14 @@ trait CityTrait
 {
 	/**
 	 * @ORM\Column
-	 * @Groups({"conference_item", "conference_list"})
+	 * @Groups({"conference_item", "conference_list", "diploma_list", "job_list"})
 	 * @Assert\NotBlank
 	 */
 	private $city;
 
 	/**
 	 * @ORM\Column
-	 * @Groups({"conference_item"})
+	 * @Groups({"conference_item", "diploma_list", "job_list"})
 	 * @Assert\NotBlank
 	 */
 	private $cp;

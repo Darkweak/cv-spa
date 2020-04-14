@@ -46,7 +46,7 @@ const data = [
         label: 'Label 1',
         test: 'Test 1',
     },
-]
+];
 
 export const About: React.FC = () => {
     return (
@@ -56,4 +56,6 @@ export const About: React.FC = () => {
             </div>
         </Layout>
     )
-}
+};
+
+export default About;

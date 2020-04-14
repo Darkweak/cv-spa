@@ -1,34 +1,43 @@
 import React from 'react';
+import path from 'path';
 import { renderToString } from 'react-dom/server';
 import { Route, StaticRouter, Switch } from 'react-router-dom';
 import { IRoute, routes } from '../routes';
 import { BaseStoreProvider } from '../contexts/BaseStoreContext';
 import { LanguageProvider } from '../contexts';
+import { ChunkExtractor } from '@loadable/server';
 
-const base_url = process.env.REACT_APP_DOMAIN;
+const base_url = process.env.REACT_APP_DOMAIN || '';
 const description = 'Sylvain COMBRAQUE - CV';
 const icon = '/favicon.png';
 const name = 'devcv';
 
+const statsFile = path.resolve('./public/dist/loadable-stats.json');
+
 export const render = (context: any, path: string, state: any) => {
+    const chunkExtractor = new ChunkExtractor({
+        publicPath: `${ base_url }/dist`,
+        statsFile,
+    });
     const content = renderToString(
         <BaseStoreProvider>
             <StaticRouter location={path} context={context}>
                 <Switch>
                     { routes.map((route: IRoute, index: number) => {
-                            const Tag: any = route.component;
-                            return <Route
-                                key={index}
-                                exact
-                                path={`/:language([a-z]{2})?${ '/' === route.path ? '' : route.path }`}
-                                render={() => <LanguageProvider><Tag/></LanguageProvider>}
-                            />
-                        })
-                    }
+                        const Tag: any = route.component;
+                        return <Route
+                            key={index}
+                            exact
+                            path={`/:language([a-z]{2})?${ '/' === route.path ? '' : route.path }`}
+                            render={() => <LanguageProvider><Tag/></LanguageProvider>}
+                        />
+                    })}
                 </Switch>
             </StaticRouter>
         </BaseStoreProvider>
     );
+    console.log(content);
+    console.log(state);
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -41,10 +50,10 @@ export const render = (context: any, path: string, state: any) => {
     <meta itemprop="name" content="${ name }">
     <meta itemprop="image" content="${ base_url }${ icon }">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@aexos1">
+    <meta name="twitter:site" content="@darkweak_dev">
     <meta name="twitter:title" content="${ name }">
     <meta name="twitter:description" content="${ description }">
-    <meta name="twitter:creator" content="@aexos1">
+    <meta name="twitter:creator" content="@darkweak_dev">
     <meta name="twitter:image:src" content="${ base_url }${ icon }">
     <meta property="og:title" content="${ name }">
     <meta property="og:type" content="website">
@@ -65,8 +74,7 @@ export const render = (context: any, path: string, state: any) => {
     </noscript>
     <div id="root">${ content }</div>
     <script>window.INITIAL_STATE = ${ JSON.stringify(state) }</script>
-    <script src="/dist/bundle.js"></script>
+    ${chunkExtractor.getScriptTags()}
   </body>
-</html>
-  `;
+</html>`;
 };

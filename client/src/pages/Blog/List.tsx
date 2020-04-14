@@ -40,3 +40,5 @@ BlogList.getInitialProps = () => {
         })),
     ];
 };
+
+export default BlogList;
