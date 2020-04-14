@@ -8,6 +8,7 @@ import { LanguageProvider } from '../contexts';
 import { ChunkExtractor } from '@loadable/server';
 
 const base_url = process.env.REACT_APP_DOMAIN || '';
+const script_url = 'https://sylvaincdn.000webhostapp.com/devcv';
 const description = 'Sylvain COMBRAQUE - CV';
 const icon = '/favicon.png';
 const name = 'devcv';
@@ -16,7 +17,7 @@ const statsFile = path.resolve('./public/dist/loadable-stats.json');
 
 export const render = (context: any, path: string, state: any) => {
     const chunkExtractor = new ChunkExtractor({
-        publicPath: `${ base_url }/dist`,
+        publicPath: `${ script_url }/dist`,
         statsFile,
     });
     const content = renderToString(
@@ -36,8 +37,6 @@ export const render = (context: any, path: string, state: any) => {
             </StaticRouter>
         </BaseStoreProvider>
     );
-    console.log(content);
-    console.log(state);
 
     return `<!DOCTYPE html>
 <html lang="en">

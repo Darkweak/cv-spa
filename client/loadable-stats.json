@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.41.5",
-  "hash": "5cb686361a893315f010",
+  "hash": "59532b0974dddb927931",
   "publicPath": "",
   "outputPath": "/app",
   "assetsByChunkName": {
@@ -26,7 +26,7 @@
     },
     {
       "name": "server.js",
-      "size": 247556,
+      "size": 247557,
       "chunks": [
         0
       ],
