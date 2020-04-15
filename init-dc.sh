@@ -13,6 +13,8 @@ for k in "${services[@]}" ; do
       - traefik.http.routers.$key.entrypoints=web-secure
       - traefik.http.routers.$key.rule=Host(\`${value}\${DOMAIN}\`)
       - traefik.http.routers.$key.tls=true
+      - traefik.http.routers.$key.tls.domains.main=\${DOMAIN}
+      - traefik.http.routers.$key.tls.domains.sans=*.\${DOMAIN}
       - traefik.http.routers.$key.tls.certresolver=sample
 "
 done
