@@ -15,9 +15,7 @@ for k in "${services[@]}" ; do
       - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
       - traefik.http.routers.$key.middlewares=https-redirect@docker
       - traefik.http.routers.$key.rule=Host(\`${value}\${DOMAIN}\`)
-      - traefik.http.routers.$key.entrypoints:
-        - web
-        - web-secure
+      - traefik.http.routers.$key.entrypoints=web,web-secure
       - traefik.http.routers.$key.tls.certresolver=letsencrypt
 "
 done
