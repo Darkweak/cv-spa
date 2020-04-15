@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-services=("admin:admin." "api:api." "cache:cache." "ssr:")
+services=("admin:admin." "api:api." "cache:cache." "mercure:mercure." "ssr:")
 text="version: '3.4'
 services:"
 
