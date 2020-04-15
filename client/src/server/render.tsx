@@ -65,7 +65,7 @@ export const render = (context: any, path: string, state: any) => {
     <link rel="stylesheet" href="https://unpkg.com/shards-ui@latest/dist/css/shards.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/tomorrow.css">
-    <link rel="stylesheet" href="/dist/main.css"/>
+    <link rel="stylesheet" href="${ script_url }/dist/main.css"/>
     <title>${ process.env.REACT_APP_NAME }</title>
   </head>
   <body>

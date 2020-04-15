@@ -10,13 +10,10 @@ for k in "${services[@]}" ; do
     text+="
   $key:
     labels:
-      - traefik.http.routers.$key.tls=true
-      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
-      - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
-      - traefik.http.routers.$key.middlewares=https-redirect@docker
+      - traefik.http.routers.$key.entrypoints=web-secure
       - traefik.http.routers.$key.rule=Host(\`${value}\${DOMAIN}\`)
-      - traefik.http.routers.$key.entrypoints=web,web-secure
-      - traefik.http.routers.$key.tls.certresolver=letsencrypt
+      - traefik.http.routers.$key.tls=true
+      - traefik.http.routers.$key.tls.certresolver=sample
 "
 done
 
