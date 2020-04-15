@@ -50,7 +50,7 @@ services:
       - APP_ENV=${APP_ENV}
       - APP_NAME=${APP_NAME}
       - APP_SECRET=${APP_SECRET}
-      - CORS_ALLOW_ORIGIN=^(${SUBDOMAINS}\.)?${DOMAIN}|localhost|cache$$
+      - CORS_ALLOW_ORIGIN=^${HTTP_OR_SSL}(${SUBDOMAINS}.)?${DOMAIN}|localhost|cache$$
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@db/${DB_NAME}
       - EMAIL_USER=${EMAIL_USER}
       - JWT_PASSPHRASE=${JWT}
@@ -77,6 +77,8 @@ services:
       - ./api/public:/srv/api/public:ro
     labels:
       - traefik.http.routers.api.rule=Host(`api.${DOMAIN}`)
+      - traefik.http.routers.api.entrypoints=web-secure
+      - traefik.http.routers.api.tls.certresolver=letsencrypt
     <<: *networks
 
   cache:
@@ -93,6 +95,8 @@ services:
       - /usr/local/var/varnish:exec
     labels:
       - traefik.http.routers.cache.rule=Host(`cache.${DOMAIN}`)
+      - traefik.http.routers.cache.entrypoints=web-secure
+      - traefik.http.routers.cache.tls.certresolver=letsencrypt
     <<: *networks
 
   db:
@@ -115,6 +119,8 @@ services:
       - PUBLISH_ALLOWED_ORIGINS=http://localhost:1337,https://localhost:1338
     labels:
       - traefik.http.routers.mercure.rule=Host(`mercure.${DOMAIN}`)
+      - traefik.http.routers.mercure.entrypoints=web-secure
+      - traefik.http.routers.mercure.tls.certresolver=letsencrypt
     <<: *networks
 
   client:
@@ -128,6 +134,8 @@ services:
       - ./client:/usr/src/client:rw,cached
     labels:
       - traefik.http.routers.client.rule=Host(`client.${DOMAIN}`)
+      - traefik.http.routers.client.entrypoints=web-secure
+      - traefik.http.routers.client.tls.certresolver=letsencrypt
     <<: *networks
 
   admin:
@@ -141,6 +149,8 @@ services:
       - ./admin:/usr/src/admin:rw,cached
     labels:
       - traefik.http.routers.admin.rule=Host(`admin.${DOMAIN}`)
+      - traefik.http.routers.admin.entrypoints=web-secure
+      - traefik.http.routers.admin.tls.certresolver=letsencrypt
     <<: *networks
 
   ssr:
@@ -154,6 +164,8 @@ services:
       - ./client/.env
     labels:
       - traefik.http.routers.ssr.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.ssr.entrypoints=web-secure
+      - traefik.http.routers.ssr.tls.certresolver=letsencrypt
     <<: *environments-ssr
     <<: *networks
 

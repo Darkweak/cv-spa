@@ -38,7 +38,7 @@ services:
       - APP_ENV=${APP_ENV}
       - APP_NAME=${APP_NAME}
       - APP_SECRET=${APP_SECRET}
-      - CORS_ALLOW_ORIGIN=^(${SUBDOMAINS}\.)?${DOMAIN}|localhost|cache$$
+      - CORS_ALLOW_ORIGIN=^${HTTP_OR_SSL}(${SUBDOMAINS}.)?${DOMAIN}|localhost|cache$$
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASS}@db/${DB_NAME}
       - EMAIL_USER=${EMAIL_USER}
       - JWT_PASSPHRASE=${JWT}
