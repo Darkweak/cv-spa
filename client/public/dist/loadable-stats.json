@@ -5,15 +5,15 @@
     "./node_modules/express/lib/view.js 81:13-25\nCritical dependency: the request of a dependency is an expression\n @ ./node_modules/express/lib/application.js\n @ ./node_modules/express/lib/express.js\n @ ./node_modules/express/index.js\n @ ./src/server/index.tsx\n @ ./src sync ^.*$\n @ ./src/index.tsx"
   ],
   "version": "4.41.5",
-  "hash": "541a8353aac15ae4e9f4",
+  "hash": "136b0d315778b8275998",
   "publicPath": "",
   "outputPath": "/usr/src/client/public/dist",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "f1151eba52622f1222f9.main.bundle.js",
+      "50e6e9061087700aa58f.main.bundle.js",
       "main.css.map",
-      "f1151eba52622f1222f9.main.bundle.js.map"
+      "50e6e9061087700aa58f.main.bundle.js.map"
     ],
     "vendors~main": [
       "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
@@ -21,30 +21,6 @@
     ]
   },
   "assets": [
-    {
-      "name": "48a293ee844b6fac39ad.3.bundle.1_0.chunk.js",
-      "size": 16980,
-      "chunks": [
-        3
-      ],
-      "chunkNames": [],
-      "info": {
-        "immutable": true
-      },
-      "emitted": false
-    },
-    {
-      "name": "48a293ee844b6fac39ad.3.bundle.1_0.chunk.js.map",
-      "size": 33548,
-      "chunks": [
-        3
-      ],
-      "chunkNames": [],
-      "info": {
-        "development": true
-      },
-      "emitted": false
-    },
     {
       "name": "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
       "size": 1035592,
@@ -67,6 +43,34 @@
       ],
       "chunkNames": [
         "vendors~main"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "50e6e9061087700aa58f.main.bundle.js",
+      "size": 83295,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "50e6e9061087700aa58f.main.bundle.js.map",
+      "size": 172568,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
       ],
       "info": {
         "development": true
@@ -98,28 +102,24 @@
       "emitted": false
     },
     {
-      "name": "f1151eba52622f1222f9.main.bundle.js",
-      "size": 83295,
+      "name": "f2469960e58087ed82eb.3.bundle.1_0.chunk.js",
+      "size": 17039,
       "chunks": [
-        0
+        3
       ],
-      "chunkNames": [
-        "main"
-      ],
+      "chunkNames": [],
       "info": {
         "immutable": true
       },
       "emitted": false
     },
     {
-      "name": "f1151eba52622f1222f9.main.bundle.js.map",
-      "size": 172568,
+      "name": "f2469960e58087ed82eb.3.bundle.1_0.chunk.js.map",
+      "size": 33710,
       "chunks": [
-        0
+        3
       ],
-      "chunkNames": [
-        "main"
-      ],
+      "chunkNames": [],
       "info": {
         "development": true
       },
@@ -163,9 +163,9 @@
         "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
         "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map",
         "main.css",
-        "f1151eba52622f1222f9.main.bundle.js",
+        "50e6e9061087700aa58f.main.bundle.js",
         "main.css.map",
-        "f1151eba52622f1222f9.main.bundle.js.map"
+        "50e6e9061087700aa58f.main.bundle.js.map"
       ],
       "children": {},
       "childAssets": {}
@@ -181,9 +181,9 @@
         "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js",
         "4c9e5504c68e49a8ac41.vendors~main.bundle.1_0.chunk.js.map",
         "main.css",
-        "f1151eba52622f1222f9.main.bundle.js",
+        "50e6e9061087700aa58f.main.bundle.js",
         "main.css.map",
-        "f1151eba52622f1222f9.main.bundle.js.map"
+        "50e6e9061087700aa58f.main.bundle.js.map"
       ],
       "children": {},
       "childAssets": {}

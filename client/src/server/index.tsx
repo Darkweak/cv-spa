@@ -13,8 +13,9 @@ app.use('/dist', express.static('public/dist'));
 
 app.get('/sitemap', async (req: any, res: any) => {
     let content: any[] = [];
+    const languages: string[] = ['en', 'fr'];
     const date = new Date().toISOString().split('T')[ 0 ];
-    const routeList: { path: string }[] = navbarRoutes.map(r => ({ path: r.path as string }));
+    const routeList: { path: string }[] = languages.map(l => navbarRoutes.map(({path}) => ({ path: `/${l}${path}` }))).flat();
     await Promise.all([
         new Article().getAll(),
         new Conference().getAll(),
