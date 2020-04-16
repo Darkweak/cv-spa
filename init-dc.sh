@@ -12,13 +12,11 @@ for k in "${services[@]}" ; do
     labels:
       - traefik.http.routers.$key.entrypoints=web-secure
       - traefik.http.routers.$key.rule=Host(\`${value}\${DOMAIN}\`)
-      - traefik.http.routers.$key.tls.certresolver=sample
       - traefik.http.routers.$key.tls=true
+      - traefik.http.routers.$key.tls.domains[0].main=\${DOMAIN}
+      - traefik.http.routers.$key.tls.domains[0].sans=*.\${DOMAIN}
+      - traefik.http.routers.$key.tls.certresolver=sample
 "
-if [ "" == "$value" ]; then
-    text+="      - traefik.http.routers.$key.tls.domains[0].main=\${DOMAIN}
-"
-fi
 done
 
 echo "$text" > ./docker-compose.override.yml
